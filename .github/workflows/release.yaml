@@ -29,8 +29,7 @@ jobs:
 
       - name: Generate changelog
         run: |
-          npx auto-changelog -p
-          # Сохраняем содержимое CHANGELOG.md в переменную окружения
+          npx auto-changelog -p --unreleased-only
           echo "CHANGELOG_CONTENT<<EOF" >> $GITHUB_ENV
           cat CHANGELOG.md >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
