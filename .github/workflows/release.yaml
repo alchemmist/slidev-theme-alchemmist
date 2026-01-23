@@ -18,6 +18,9 @@ jobs:
         with:
           version: 10
 
+      - name: Extract version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
       - name: Pack tarball
         run: pnpm pack
 
@@ -25,8 +28,7 @@ jobs:
         run: git archive -o source.zip HEAD
 
       - name: Generate changelog
-        run: |
-          npx auto-changelog -p || echo "No changelog"
+        run: npx auto-changelog -p || echo "No changelog"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -34,14 +36,13 @@ jobs:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
           body: |
-            📦 NPM: https://www.npmjs.com/package/slidev-theme-alchemmist/v/${{ github.ref_name#v }}
+            📦 NPM: https://www.npmjs.com/package/slidev-theme-alchemmist/v/${{ env.VERSION }}
 
-            See CHANGELOG below:
-
-            ${{ steps.changelog.outputs.changelog }}
+            See CHANGELOG below.
           files: |
             *.tgz
             source.zip
             CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
