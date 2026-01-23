@@ -1,22 +1,22 @@
 @font-face {
   font-family: "CMU-Roman";
   src:
-    url("/assets/fonts/cmu.serif-roman.woff2") format("woff2"),
-    url("/assets/fonts/cmu.serif-roman.ttf") format("truetype");
+    url("../public/assets/fonts/cmu.serif-roman.woff2") format("woff2"),
+    url("../public/assets/fonts/cmu.serif-roman.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "CMU-Typewriter";
   src:
-    url("/assets/fonts/cmu.typewriter-text-regular.woff2") format("woff2"),
-    url("/assets/fonts/cmu.typewriter-text-regular.ttf") format("truetype");
+    url("../public/assets/fonts/cmu.typewriter-text-regular.woff2") format("woff2"),
+    url("../public/assets/fonts/cmu.typewriter-text-regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "CourierCyr";
   src:
-    url("/assets/fonts/couriercyr.woff2") format("woff2"),
-    url("/assets/fonts/couriercyr.ttf") format("truetype");
+    url("../public/assets/fonts/couriercyr.woff2") format("woff2"),
+    url("../public/assets/fonts/couriercyr.ttf") format("truetype");
 }
 
 :root {
