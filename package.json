@@ -1,6 +1,6 @@
 {
   "name": "slidev-theme-alchemmist",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Theme fro slidev by alchemmist",
   "author": "alchemmist <anton.ingrish@gmail.com>",
   "license": "MIT",
@@ -10,7 +10,8 @@
     "styles",
     "setup",
     "global-top.vue",
-    "layoutHelper.ts"
+    "layoutHelper.ts",
+    "public/assets/fonts"
   ],
   "funding": "https://alchemmist.xyz",
   "homepage": "https://sli.dev",
@@ -46,4 +47,3 @@
     "prism-theme-vars": "^0.2.4"
   }
 }
-
