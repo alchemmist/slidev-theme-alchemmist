@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pack tarball
+        run: pnpm pack
+
+      - name: Generate source.zip
+        run: git archive -o source.zip HEAD
+
+      - name: Generate changelog
+        run: |
+          npx auto-changelog -p || echo "No changelog"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: |
+            📦 NPM: https://www.npmjs.com/package/YOUR_PACKAGE/v${{ github.ref_name }}
+
+            See CHANGELOG below:
+
+            ${{ steps.changelog.outputs.changelog }}
+          files: |
+            *.tgz
+            source.zip
+            CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

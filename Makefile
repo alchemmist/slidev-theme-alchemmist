@@ -10,6 +10,7 @@ release:
 	pnpm version patch
 	pnpm pack
 	pnpm publish
+	git push --follow-tags
 
 clean:
 	rm -rf ./slidev-theme-alchemmist-*.tgz
