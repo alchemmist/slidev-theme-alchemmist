@@ -28,7 +28,12 @@ jobs:
         run: git archive -o source.zip HEAD
 
       - name: Generate changelog
-        run: npx auto-changelog -p || echo "No changelog"
+        run: |
+          npx auto-changelog -p
+          # Сохраняем содержимое CHANGELOG.md в переменную окружения
+          echo "CHANGELOG_CONTENT<<EOF" >> $GITHUB_ENV
+          cat CHANGELOG.md >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -38,11 +43,10 @@ jobs:
           body: |
             📦 NPM: https://www.npmjs.com/package/slidev-theme-alchemmist/v/${{ env.VERSION }}
 
-            See CHANGELOG below.
+            ${{ env.CHANGELOG_CONTENT }}
           files: |
             *.tgz
             source.zip
-            CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
