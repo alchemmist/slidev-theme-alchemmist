@@ -1,0 +1,49 @@
+{
+  "name": "slidev-theme-alchemmist",
+  "version": "0.1.0",
+  "description": "Theme fro slidev by alchemmist",
+  "author": "alchemmist <anton.ingrish@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "components",
+    "layouts",
+    "styles",
+    "setup",
+    "global-top.vue",
+    "layoutHelper.ts"
+  ],
+  "funding": "https://alchemmist.xyz",
+  "homepage": "https://sli.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alchemmist/slidev-theme-alchemmist"
+  },
+  "bugs": "https://github.com/alchemmist/slidev-theme-alchemmist/issues",
+  "keywords": [
+    "slidev-theme",
+    "slidev",
+    "alchemmist"
+  ],
+  "slidev": {
+    "defaults": {
+      "themeConfig": {
+        "paginationX": "r",
+        "paginationY": "t"
+      },
+      "favicon": "https://cdn.jsdelivr.net/gh/alchemmist/blog@main/site/static/favicon.ico",
+      "mdc": true,
+      "transition": "slide-left",
+      "fonts": {
+        "sans": "CMU-Roman",
+        "serif": "CMU-Roman",
+        "mono": "CMU-Typewriter",
+        "provider": "none"
+      }
+    }
+  },
+  "dependencies": {
+    "codemirror-theme-vars": "^0.1.2",
+    "prism-theme-vars": "^0.2.4"
+  }
+}
+

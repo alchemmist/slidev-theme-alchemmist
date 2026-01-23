@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "CMU-Roman";
+  src:
+    url("/assets/fonts/cmu.serif-roman.woff2") format("woff2"),
+    url("/assets/fonts/cmu.serif-roman.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "CMU-Typewriter";
+  src:
+    url("/assets/fonts/cmu.typewriter-text-regular.woff2") format("woff2"),
+    url("/assets/fonts/cmu.typewriter-text-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "CourierCyr";
+  src:
+    url("/assets/fonts/couriercyr.woff2") format("woff2"),
+    url("/assets/fonts/couriercyr.ttf") format("truetype");
+}
+
+:root {
+  font-size: 12px;
+}
+
+
+.slidev-note :not(pre) > code,
+.slidev-layout :not(pre) > code {
+  padding: 0.1rem 0.3rem !important;
+}
+
+.mono-text {
+  font-family: "CMU-Typewriter", monospace;
+  font-size: 0.9em;
+}
+
+.slidev-layout.cover h1,
+.slidev-layout.intro h1 {
+  font-size: 3rem !important;
+}
+
+.slidev-footer {
+  position: absolute;
+  bottom: 0;
+  left: var(--slide-padding-inline, 2rem);
+  right: var(--slide-padding-inline, 2rem);
+  padding: 1rem 1rem;
+  text-align: center;
+  box-sizing: border-box;
+  opacity: 0.5;
+}
+
+.slidev-monaco-container {
+  width: 500px !important;
+}
+
+.left-image img {
+  object-fit: cover;
+  object-position: left;
+}
+
+.slidev-layout li {
+  line-height: 1.2em !important;
+}
+
+.slidev-layout ul {
+  list-style: square;
+  gap: 0.9em;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em;
+}
+
+ol li {
+  margin: 1em 0;
+}
+
