@@ -34,7 +34,7 @@ jobs:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
           body: |
-            📦 NPM: https://www.npmjs.com/package/YOUR_PACKAGE/v${{ github.ref_name }}
+            📦 NPM: https://www.npmjs.com/package/slidev-theme-alchemmist/v${{ github.ref_name }}
 
             See CHANGELOG below:
 
@@ -44,4 +44,4 @@ jobs:
             source.zip
             CHANGELOG.md
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
