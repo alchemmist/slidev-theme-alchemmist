@@ -34,7 +34,7 @@ jobs:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
           body: |
-            📦 NPM: https://www.npmjs.com/package/slidev-theme-alchemmist/${{ github.ref_name }}
+            📦 NPM: https://www.npmjs.com/package/slidev-theme-alchemmist/v/${{ github.ref_name#v }}
 
             See CHANGELOG below:
 
