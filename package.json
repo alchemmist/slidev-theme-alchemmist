@@ -11,7 +11,7 @@
     "setup",
     "global-top.vue",
     "layoutHelper.ts",
-    "public/assets/fonts"
+    "public"
   ],
   "funding": "https://alchemmist.xyz",
   "homepage": "https://sli.dev",
