@@ -1,18 +1,17 @@
 <template>
   <div class="slidev-layout quote">
     <slot />
-    <Footer :date="date" />
+    <slot name="footer" />
   </div>
 </template>
 
 <script setup lang="ts">
-import Footer from '../components/Footer.vue'
-import { computed } from 'vue'
-import { useSlideContext } from '@slidev/client'
+import { computed } from "vue";
+import { useSlideContext } from "@slidev/client";
 
-const ctx = useSlideContext()
+const ctx = useSlideContext();
 
-const date = computed(() => ctx.frontmatter?.date ?? '')
+const date = computed(() => ctx.frontmatter?.date ?? "");
 </script>
 
 <style scoped>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useAttrs, computed } from 'vue'
 import { handleBackground, resolveAssetUrl } from '../layoutHelper'
-import Footer from '../components/Footer.vue'
 
 const props = defineProps({
   image: {
@@ -44,7 +43,6 @@ const style = computed(() => {
   <div class="grid grid-cols-2 w-full h-full auto-rows-fr">
     <div class="slidev-layout image-right" :class="props.class">
       <slot />
-      <Footer hide-date hide-logos />
     </div>
     <div class="w-full h-full" :style="style" />
   </div>

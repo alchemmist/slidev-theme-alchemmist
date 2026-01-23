@@ -46,9 +46,6 @@
 .slidev-layout.intro {
   @apply h-full grid;
 
-  h1 {
-    @apply text-6xl leading-20;
-  }
 }
 
 .slidev-layout.fact {

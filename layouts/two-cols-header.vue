@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useAttrs, computed } from 'vue'
-import Footer from "../components/Footer.vue";
 
 const props = defineProps({
   class: String,
@@ -31,7 +30,6 @@ const gap = computed(() => attrs.gap ?? "20px");
       <slot name="bottom" />
     </div>
   </div>
-  <Footer :date="date" />
 </template>
 
 <style scoped>

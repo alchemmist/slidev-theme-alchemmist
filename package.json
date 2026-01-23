@@ -27,10 +27,6 @@
   ],
   "slidev": {
     "defaults": {
-      "themeConfig": {
-        "paginationX": "r",
-        "paginationY": "t"
-      },
       "favicon": "https://cdn.jsdelivr.net/gh/alchemmist/blog@main/site/static/favicon.ico",
       "mdc": true,
       "transition": "slide-left",

@@ -20,7 +20,7 @@
 }
 
 :root {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 
@@ -36,7 +36,11 @@
 
 .slidev-layout.cover h1,
 .slidev-layout.intro h1 {
-  font-size: 3rem !important;
+  font-size: 2.5rem !important;
+}
+
+.slidev-layout.intro {
+  font-size: 1.25rem;
 }
 
 .slidev-footer {
