@@ -10,10 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   deploy:
     environment:
@@ -37,12 +33,21 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      # ---------- Install deps ----------
+      # ---------- Разрешаем postinstall скрипты ----------
+      - name: Enable pnpm build scripts
+        run: pnpm config set enable-pre-post-scripts true
+
+      # ---------- Установка зависимостей без lockfile ----------
       - name: Install example dependencies
         working-directory: example
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
-      # ---------- Build Slidev ----------
+      # ---------- Проверка темы ----------
+      - name: Check installed theme
+        working-directory: example
+        run: pnpm list slidev-theme-alchemmist
+
+      # ---------- Сборка Slidev ----------
       - name: Build slides
         working-directory: example
         run: pnpm slidev build --base /${{ github.event.repository.name }}/ --out ../dist
