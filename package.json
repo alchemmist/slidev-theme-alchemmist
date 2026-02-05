@@ -41,5 +41,13 @@
   "dependencies": {
     "codemirror-theme-vars": "^0.1.2",
     "prism-theme-vars": "^0.2.5"
+  },
+  "peerDependencies": {
+    "@slidev/client": "^52",
+    "@slidev/types": "^52"
+  },
+  "devDependencies": {
+    "@slidev/client": "^52",
+    "@slidev/types": "^52"
   }
 }
