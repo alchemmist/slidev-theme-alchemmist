@@ -80,3 +80,10 @@
 .slidev-layout.two-cols {
   gap: 1cm;
 }
+
+.alchemmist-layout-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - var(--alchemmist-footer-height, 0px));
+}

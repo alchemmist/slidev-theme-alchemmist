@@ -1,7 +1,9 @@
 <template>
-  <div class="slidev-layout default">
-    <Pagination x="r" y="t" class-names="text-gray-400" />
-    <slot />
+  <div class="alchemmist-layout-frame">
+    <div class="slidev-layout default w-full">
+      <Pagination x="r" y="t" class-names="text-gray-400" />
+      <slot />
+    </div>
   </div>
 </template>
 

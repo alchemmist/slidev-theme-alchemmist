@@ -1,6 +1,8 @@
 <template>
-  <div class="slidev-layout end">
-    <slot>END</slot>
+  <div class="alchemmist-layout-frame">
+    <div class="slidev-layout end w-full h-full">
+      <slot>END</slot>
+    </div>
   </div>
 </template>
 

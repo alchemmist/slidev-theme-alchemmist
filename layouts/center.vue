@@ -1,8 +1,10 @@
 <template>
-  <div class="slidev-layout flex center h-full grid place-content-center">
-    <div class="my-auto">
-      <slot />
-      <slot name="footer" />
+  <div class="alchemmist-layout-frame">
+    <div class="slidev-layout flex center h-full grid place-content-center w-full">
+      <div class="my-auto">
+        <slot />
+        <slot name="footer" />
+      </div>
     </div>
   </div>
 </template>

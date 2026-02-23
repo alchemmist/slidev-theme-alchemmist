@@ -1,7 +1,9 @@
 <template>
-  <div class="slidev-layout quote">
-    <slot />
-    <slot name="footer" />
+  <div class="alchemmist-layout-frame">
+    <div class="slidev-layout quote w-full h-full">
+      <slot />
+      <slot name="footer" />
+    </div>
   </div>
 </template>
 

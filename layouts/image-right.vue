@@ -40,11 +40,12 @@ const style = computed(() => {
 </script>
 
 <template>
-  <div class="grid grid-cols-2 w-full h-full auto-rows-fr">
-    <div class="slidev-layout image-right" :class="props.class">
-      <slot />
+  <div class="alchemmist-layout-frame">
+    <div class="grid grid-cols-2 w-full h-full auto-rows-fr">
+      <div class="slidev-layout image-right" :class="props.class">
+        <slot />
+      </div>
+      <div class="w-full h-full" :style="style" />
     </div>
-    <div class="w-full h-full" :style="style" />
   </div>
 </template>
-
