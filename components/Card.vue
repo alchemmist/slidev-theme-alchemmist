@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-md bg-white shadow-card p-0 rounded-none">
+  <div class="w-fit bg-white shadow-card p-0 rounded-none">
     <div 
       v-if="title" 
       :class="[monoHead ? 'font-mono' : '', 'px-4 py-2']"

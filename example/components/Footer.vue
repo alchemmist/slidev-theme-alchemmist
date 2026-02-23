@@ -11,20 +11,24 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useSlideContext } from '@slidev/client'
+import { computed } from "vue";
+import { useSlideContext } from "@slidev/client";
 
 const props = defineProps<{
-  hideDate?: boolean
-  hideLogos?: boolean
-}>()
+  hideDate?: boolean;
+  hideLogos?: boolean;
+}>();
 
-const { $slidev, $frontmatter } = useSlideContext()
+const { $slidev, $frontmatter } = useSlideContext();
 
-const date = computed(() => $frontmatter.date ?? $slidev.configs.date ?? '')
+const date = computed(() => $frontmatter.date ?? $slidev.configs.date ?? "");
 
-const hideLogos = computed(() => props.hideLogos ?? $frontmatter.hideLogos ?? false)
-const hideDate = computed(() => props.hideDate ?? $frontmatter.hideDate ?? false)
+const hideLogos = computed(
+  () => props.hideLogos ?? $frontmatter.hideLogos ?? false,
+);
+const hideDate = computed(
+  () => props.hideDate ?? $frontmatter.hideDate ?? false,
+);
 </script>
 
 <style scoped>
@@ -32,6 +36,7 @@ const hideDate = computed(() => props.hideDate ?? $frontmatter.hideDate ?? false
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 10px;
 }
 
 .slidev-footer .left img {
@@ -48,5 +53,3 @@ const hideDate = computed(() => props.hideDate ?? $frontmatter.hideDate ?? false
   color: var(--slidev-footer-color, #555);
 }
 </style>
-
-

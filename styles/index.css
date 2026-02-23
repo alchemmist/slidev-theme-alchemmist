@@ -8,8 +8,10 @@
 @font-face {
   font-family: "CMU-Typewriter";
   src:
-    url("../public/assets/fonts/cmu.typewriter-text-regular.woff2") format("woff2"),
-    url("../public/assets/fonts/cmu.typewriter-text-regular.ttf") format("truetype");
+    url("../public/assets/fonts/cmu.typewriter-text-regular.woff2")
+      format("woff2"),
+    url("../public/assets/fonts/cmu.typewriter-text-regular.ttf")
+      format("truetype");
 }
 
 @font-face {
@@ -19,10 +21,20 @@
     url("../public/assets/fonts/couriercyr.ttf") format("truetype");
 }
 
-:root {
-  font-size: 13px;
+@font-face {
+  font-family: "Symbols Nerd Font";
+  src:
+    url("../public/assets/fonts/Symbols-2048-em Nerd Font Complete.woff2")
+      format("woff2"),
+    url("../public/assets/fonts/SymbolsNerdFont-Regular.ttf") format("truetype"),
+    url("../public/assets/fonts/SymbolsNerdFontMono-Regular.ttf")
+      format("truetype");
 }
 
+:root {
+  font-size: 13px;
+  --slidev-code-font-family: "CMU-Typewriter", "Symbols Nerd Font", monospace !important;
+}
 
 .slidev-note :not(pre) > code,
 .slidev-layout :not(pre) > code {
@@ -30,7 +42,7 @@
 }
 
 .mono-text {
-  font-family: "CMU-Typewriter", monospace;
+  font-family: var(--slidev-code-font-family);
   font-size: 0.9em;
 }
 
@@ -54,10 +66,6 @@
   opacity: 0.5;
 }
 
-.slidev-monaco-container {
-  width: 500px !important;
-}
-
 .left-image img {
   object-fit: cover;
   object-position: left;
@@ -78,4 +86,3 @@
 ol li {
   margin: 1em 0;
 }
-
