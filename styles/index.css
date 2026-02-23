@@ -34,6 +34,7 @@
 :root {
   font-size: 13px;
   --slidev-code-font-family: "CMU-Typewriter", "Symbols Nerd Font", monospace !important;
+  --alchemmist-footer-height: 0px;
 }
 
 .slidev-note :not(pre) > code,
@@ -56,14 +57,25 @@
 }
 
 .slidev-footer {
-  position: absolute;
-  bottom: 0;
-  left: var(--slide-padding-inline, 2rem);
-  right: var(--slide-padding-inline, 2rem);
-  padding: 1rem 1rem;
-  text-align: center;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   opacity: 0.5;
+}
+
+.slidev-footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.slidev-footer-logo {
+  height: 1.5rem;
+}
+
+.slidev-footer-right {
+  font-size: 0.9rem;
+  color: var(--slidev-footer-color, #555);
 }
 
 .left-image img {

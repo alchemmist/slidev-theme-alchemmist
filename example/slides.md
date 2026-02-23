@@ -17,6 +17,8 @@ themeConfig:
   paginationX: r
   paginationY: t
   paginationPagesDisabled: []
+  footerComponent: ProjectFooter
+  footerPagesDisabled: [1, 7]
 ---
 
 # Open Source as a driver of modern software
@@ -47,8 +49,6 @@ layout: center
 | <code style="color:#5D3FD3">trends</code>     | The Market & Future Trends                |
 | <code style="color:#0096FF">qa</code>         | Conclusion and discussion                 |
 
-<Footer />
-
 ---
 layout: center
 ---
@@ -66,8 +66,6 @@ $9.7 billion by 2024."
   avatar="/assets/pranay-ahlawat.png"
   type="Article"
 />
-
-<Footer />
 
 ---
 layout: center
@@ -89,8 +87,6 @@ layout: center
   <li v-click>Profile: all what you do, it's save as hitory of your experience.</li>
 </ul>
 
-<Footer />
-
 ---
 layout: center
 ---
@@ -109,8 +105,6 @@ layout: center
   <li v-click><strong>Liability Void:</strong> No single entity (like a vendor) bears legal responsibility for failures. Companies assume the risk themselves.</li>
   <li v-click><strong>Supply Chain Attacks:</strong> Malicious actors can infiltrate popular projects (like the <strong>log4j</strong> incident) affecting millions.</li>
 </ul>
-
-<Footer />
 
 ---
 layout: center
@@ -138,8 +132,6 @@ Driven by IoT (20B to 41B connections by 2025). OSS platform segment to grow fro
 Mix of free OSS core + paid proprietary features/services (<i>e.g., Red Hat, GitLab</i>).
 </Card>
 </div>
-
-<Footer />
 
 ---
 layout: center

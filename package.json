@@ -9,6 +9,7 @@
     "layouts",
     "styles",
     "setup",
+    "global-bottom.vue",
     "global-top.vue",
     "layoutHelper.ts",
     "public"

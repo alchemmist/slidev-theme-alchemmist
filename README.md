@@ -17,6 +17,7 @@ A modern, customizable Slidev theme inspired by design of [alchemmist](https://a
 - Clean and stylish typography
 - Toolkit of custom components (like `Quote`, `Card`, ...)
 - Builtin pagination
+- Builtin auto footer with page-level disable rules
 - The mechanism of slides section with colorful markers
 - Table of contents in table view
 
@@ -30,6 +31,42 @@ theme: alchemmist
 ---
 ```
 Learn more about [how to use theme](https://sli.dev/guide/theme-addon#use-theme).
+
+## Footer
+
+Footer is now rendered automatically for every slide.
+
+Use `themeConfig.footerPagesDisabled` to disable footer on specific page numbers:
+
+```md
+---
+theme: alchemmist
+themeConfig:
+  footerPagesDisabled: [1, 4, 5]
+---
+```
+
+Use per-slide frontmatter to disable footer:
+
+```md
+---
+footer: false
+---
+```
+
+To set custom footer for whole deck, create your own component and set it in `themeConfig.footerComponent`.
+
+```md
+---
+theme: alchemmist
+themeConfig:
+  footerComponent: ProjectFooter
+---
+```
+
+Then implement `components/ProjectFooter.vue` (name must match `footerComponent`) and reuse base theme footer via `AlchemmistFooter` if needed.
+
+Theme also exposes dynamic CSS variable `--alchemmist-footer-height`, so custom layouts can subtract real footer height from available space.
 
 ## Development
 

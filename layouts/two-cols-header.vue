@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { useAttrs, computed, ref, onMounted, reactive } from "vue";
+import { computed, useAttrs } from 'vue'
 
 const props = defineProps({
   class: String,
   layoutClass: String,
-});
+})
 
-const attrs = useAttrs();
-const gap = computed(() => attrs.gap ?? "20px");
+const attrs = useAttrs()
+const gap = computed(() => attrs.gap ?? '20px')
 </script>
 
 <template>
-  <div class="flex center h-[calc(100%_-_50px)]" >
+  <div class="flex center h-[calc(100%_-_var(--alchemmist-footer-height,_0px))]" >
     <div
       class="slidev-layout two-cols-header w-full"
       :class="layoutClass"
