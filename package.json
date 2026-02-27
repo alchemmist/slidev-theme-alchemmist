@@ -41,6 +41,7 @@
     }
   },
   "dependencies": {
+    "@iconify-json/carbon": "^1.2.18",
     "@iconify-json/devicon": "^1.2.59",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/streamline-logos": "^1.2.0",

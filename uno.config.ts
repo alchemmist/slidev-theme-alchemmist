@@ -10,5 +10,6 @@ export default defineConfig({
     "i-streamline-logos:apple-logo-solid",
     "i-devicon:windows8",
     "i-mdi:bash",
+    "i-carbon:document-configuration",
   ],
 });
