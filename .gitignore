@@ -2,3 +2,4 @@ slidev-theme-alchemmist-*.tgz
 node_modules
 example/pnpm-lock.yaml
 example/pnpm-workspace.yaml
+dist

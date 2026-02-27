@@ -36,7 +36,15 @@ Learn more about [how to use theme](https://sli.dev/guide/theme-addon#use-theme)
 
 Footer is now rendered automatically for every slide.
 
-Use `themeConfig.footerPagesDisabled` to disable footer on specific page numbers:
+Use per-slide frontmatter to disable footer:
+
+```md
+---
+footer: false
+---
+```
+
+You can still use `themeConfig.footerPagesDisabled` to disable footer on specific page numbers:
 
 ```md
 ---
@@ -46,13 +54,19 @@ themeConfig:
 ---
 ```
 
-Use per-slide frontmatter to disable footer:
+## Pagination
+
+Pagination is rendered automatically when `themeConfig.paginationX` or `themeConfig.paginationY` is set.
+
+Use per-slide frontmatter to disable pagination:
 
 ```md
 ---
-footer: false
+pagination: false
 ---
 ```
+
+You can still use `themeConfig.paginationPagesDisabled` to disable pagination on specific page numbers.
 
 To set custom footer for whole deck, create your own component and set it in `themeConfig.footerComponent`.
 

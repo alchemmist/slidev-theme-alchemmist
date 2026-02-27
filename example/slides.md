@@ -12,13 +12,13 @@ favicon: "https://cdn.jsdelivr.net/gh/alchemmist/blog@main/site/static/favicon.i
 duration: 35min
 date: January 23th, 2026
 remoteAssets: false
-layout: intro
 themeConfig:
   paginationX: r
   paginationY: t
-  paginationPagesDisabled: []
   footerComponent: ProjectFooter
-  footerPagesDisabled: [1, 7]
+layout: intro
+footer: false
+pagination: false
 ---
 
 # Open Source as a driver of modern software
@@ -69,6 +69,8 @@ $9.7 billion by 2024."
 
 ---
 layout: center
+pagination: false
+footer: false
 ---
 
 <style scoped>
@@ -135,6 +137,7 @@ Mix of free OSS core + paid proprietary features/services (<i>e.g., Red Hat, Git
 
 ---
 layout: center
+pagination: false
 ---
 
 # Thank you, let's discuss<MarkerX color="#0096FF" title="qa" />

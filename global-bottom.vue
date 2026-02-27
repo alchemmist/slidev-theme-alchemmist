@@ -10,14 +10,16 @@
 
 <script setup lang="ts">
 import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { useSlideContext } from '@slidev/client'
+import { useNav, useSlideContext } from '@slidev/client'
 import AlchemmistFooter from './components/AlchemmistFooter.vue'
 
 const FOOTER_HEIGHT_VAR = '--alchemmist-footer-height'
 
-const { $slidev, $frontmatter } = useSlideContext()
+const { $slidev } = useSlideContext()
+const { currentSlideRoute } = useNav()
 const footerHost = ref<HTMLDivElement | null>(null)
 const footerComponentModules = import.meta.glob('/components/**/*.vue')
+const currentFrontmatter = computed(() => currentSlideRoute.value?.meta?.slide?.frontmatter ?? {})
 
 const footerComponentByName = new Map<string, ReturnType<typeof defineAsyncComponent>>()
 
@@ -38,7 +40,10 @@ const showFooter = computed(() => {
   if ($slidev.themeConfigs.footer === false)
     return false
 
-  if ($frontmatter.footer === false || $frontmatter.hideFooter === true)
+  const isSlideFooterHidden = currentFrontmatter.value.footer === false
+    || currentFrontmatter.value.hideFooter === true
+
+  if (isSlideFooterHidden)
     return false
 
   if ($slidev.nav.currentPage === $slidev.nav.total + 1)
