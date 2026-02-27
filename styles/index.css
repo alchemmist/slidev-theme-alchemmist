@@ -31,6 +31,10 @@
       format("truetype");
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 .mermaid * {
   font-family: "CMU-Typewriter", "Symbols Nerd Font", monospace !important;
 }
@@ -40,6 +44,10 @@
   --slidev-code-font-family:
     "CMU-Typewriter", "Symbols Nerd Font", monospace !important;
   --alchemmist-footer-height: 0px;
+}
+
+.slidev-code-block-title {
+  font-family: "CMU-Typewriter", "Symbols Nerd Font", monospace !important;
 }
 
 .slidev-note :not(pre) > code,
@@ -79,7 +87,7 @@
 }
 
 .slidev-footer-right {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--slidev-footer-color, #555);
 }
 
@@ -110,4 +118,71 @@ ol li {
 
 .slidev-layout a code {
   text-decoration: underline solid 2px;
+}
+
+.slidev-code-wrapper {
+  overflow: hidden;
+}
+
+.slidev-code-wrapper pre {
+  overflow-x: auto;
+  overflow-y: auto;
+  white-space: pre;
+  display: block;
+}
+
+.slidev-code-tab {
+  gap: 4px !important;
+}
+
+.slidev-code-tab > div[class^="i-"] {
+  width: 1em !important;
+  height: 1em !important;
+}
+
+.slidev-code-tab > div:not([class^="i-"]) {
+  line-height: initial !important;
+}
+
+.slidev-code-copy {
+  padding: 0; 
+  margin: 3px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(120, 120, 120, 0.0);
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.slidev-code-copy svg {
+  width: 12px;
+  height: 12px;
+  padding: 0px;
+  color: rgb(10, 10, 10);
+  opacity: 1;
+}
+
+.slidev-code-copy:hover {
+  background: rgba(120, 120, 120, 0.4);
+}
+
+.col-left,
+.col-right {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.col-right pre,
+.col-right .slidev-code-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+  word-break: break-all;
+}
+
+.i-no\:icon {
+  display: none;
 }

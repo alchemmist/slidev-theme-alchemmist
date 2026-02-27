@@ -324,6 +324,27 @@
   dependencies:
     "@iconify/types" "*"
 
+"@iconify-json/devicon@^1.2.59":
+  version "1.2.59"
+  resolved "https://registry.yarnpkg.com/@iconify-json/devicon/-/devicon-1.2.59.tgz#e33442dca9da33be851c0b9756b38711dd6c0117"
+  integrity sha512-OBa/V8rB3zyDmT0W+XAdF/20ErDIL8hxwtPjxv6fRKkokqdWhfTJiRXtS6YZXp8M03scjT+uugd7jonIgfbnfg==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/logos@^1.2.10":
+  version "1.2.10"
+  resolved "https://registry.yarnpkg.com/@iconify-json/logos/-/logos-1.2.10.tgz#21529b8ca71185824331ce09bb97a1b7eb304502"
+  integrity sha512-qxaXKJ6fu8jzTMPQdHtNxlfx6tBQ0jXRbHZIYy5Ilh8Lx9US9FsAdzZWUR8MXV8PnWTKGDFO4ZZee9VwerCyMA==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/mdi@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@iconify-json/mdi/-/mdi-1.2.3.tgz#5e4ee9d8c8aaad04381c8cc6c6edbe3327f031b5"
+  integrity sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify-json/ph@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@iconify-json/ph/-/ph-1.2.2.tgz#eac734e80f4639df6ade990690a825540b4259c4"
@@ -331,10 +352,38 @@
   dependencies:
     "@iconify/types" "*"
 
+"@iconify-json/streamline-logos@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@iconify-json/streamline-logos/-/streamline-logos-1.2.0.tgz#8264a916272573d73770ecaa26397623c96ca28b"
+  integrity sha512-eEMC8BvJTCUiR/xdAjKuJwRGnKV5v9Prp2wgONFLKILq1om/5Pz+EUsFXVqYSVeIAUfguaB2tjy1wM7wJbs0IQ==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify-json/svg-spinners@^1.2.4":
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/@iconify-json/svg-spinners/-/svg-spinners-1.2.4.tgz#e142f5aa6b36c5b6d99dfe88ef0772bb5c99c4e6"
   integrity sha512-ayn0pogFPwJA1WFZpDnoq9/hjDxN+keeCMyThaX4d3gSJ3y0mdKUxIA/b1YXWGtY9wVtZmxwcvOIeEieG4+JNg==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/tabler@^1.2.27":
+  version "1.2.27"
+  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.2.27.tgz#f9b2e632807f27bfe381abcf1e7b452a5b15a0da"
+  integrity sha512-ZpPD83YxRepw0uxEbDNJqRlSFRiek9TPaKvQ/62FrqfyCmgPidR3Q9uM5Mzb1miQC36BlLFhmadoKtpzQkoAUQ==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/uil@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@iconify-json/uil/-/uil-1.2.3.tgz#d455746fe32491fa46a884b6d47e4b7a3cc9c76f"
+  integrity sha512-if91+UBhDQc6glPsIaXecGIcXnbQZfEO4Gdv89TV2xQ+V5e9GWbY5rNl2fsKZd8COsRQ5lRQAKimVQVL0CZZVg==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/vscode-icons@^1.2.44":
+  version "1.2.44"
+  resolved "https://registry.yarnpkg.com/@iconify-json/vscode-icons/-/vscode-icons-1.2.44.tgz#4ce820e701acb3955a2cd86ce3f7bb94a967e9dc"
+  integrity sha512-3fLOIRRtsm6HD6UPJ3Y6/UztqxNTYgKA8VxrWeg1C+042MD3A/06CkWSsii1pz/f1zl0+YxvCHIVM3tXUlho+A==
   dependencies:
     "@iconify/types" "*"
 
