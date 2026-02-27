@@ -31,15 +31,20 @@
       format("truetype");
 }
 
+.mermaid * {
+  font-family: "CMU-Typewriter", "Symbols Nerd Font", monospace !important;
+}
+
 :root {
   font-size: 13px;
-  --slidev-code-font-family: "CMU-Typewriter", "Symbols Nerd Font", monospace !important;
+  --slidev-code-font-family:
+    "CMU-Typewriter", "Symbols Nerd Font", monospace !important;
   --alchemmist-footer-height: 0px;
 }
 
 .slidev-note :not(pre) > code,
 .slidev-layout :not(pre) > code {
-  padding: 0.1rem 0.3rem !important;
+  padding: 0.01rem 0.3rem !important;
 }
 
 .mono-text {
@@ -97,4 +102,12 @@
 
 ol li {
   margin: 1em 0;
+}
+
+.slidev-layout a:has(code) {
+  border-width: 0;
+}
+
+.slidev-layout a code {
+  text-decoration: underline solid 2px;
 }
