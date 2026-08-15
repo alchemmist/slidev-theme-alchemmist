@@ -367,9 +367,9 @@
     "@iconify/types" "*"
 
 "@iconify-json/tabler@^1.2.27":
-  version "1.2.27"
-  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.2.27.tgz#f9b2e632807f27bfe381abcf1e7b452a5b15a0da"
-  integrity sha512-ZpPD83YxRepw0uxEbDNJqRlSFRiek9TPaKvQ/62FrqfyCmgPidR3Q9uM5Mzb1miQC36BlLFhmadoKtpzQkoAUQ==
+  version "1.2.38"
+  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.2.38.tgz#adb0599c15dc09e884b9d225ba5b2850953bfef5"
+  integrity sha512-9v6ooRU/bKOK/Whv4w2aiK5gBnfCV9Ei+uD1iDDeLu2b+EnF3G3ZKkRKWEOOLG8bJyfKn6XEia6gUQ9oO7cF+Q==
   dependencies:
     "@iconify/types" "*"
 
