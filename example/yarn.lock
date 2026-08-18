@@ -484,9 +484,23 @@
   integrity sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==
 
 "@iconify-json/carbon@^1.2.18":
-  version "1.2.18"
-  resolved "https://registry.yarnpkg.com/@iconify-json/carbon/-/carbon-1.2.18.tgz#e3efa415fac9fc4f60ac96a37ed8712670b7496c"
-  integrity sha512-Grb13E6r/RqTEV4Sqd/BQR2FUt57U2WLuticJ5H8JbTdHLop1LmdePu3EJJA3Xi8DcWRbD6OnC133hKfOwlgtg==
+  version "1.2.25"
+  resolved "https://registry.yarnpkg.com/@iconify-json/carbon/-/carbon-1.2.25.tgz#18988fa435c8068eb4d7da76fc50ff2d90538609"
+  integrity sha512-7GLgXnmi47Skh8DcPPiP8U3vgm3rOVziEe+flCdG/kwiVaeb649U3Eqt/ej4f3NvlZK8BrOxpR3xQlWFLZYblQ==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/devicon@^1.2.59":
+  version "1.2.62"
+  resolved "https://registry.yarnpkg.com/@iconify-json/devicon/-/devicon-1.2.62.tgz#8cd2b5acc6651fe62fbb2efde88c84465222823f"
+  integrity sha512-X0o0+fOJL2t5JTbDCGLRzrmvf8Pv5q8dr86+fW+F/VJ9qvXTtny6lqGIwjE9AY4VTLm3i8f/N+VtRheSW6OkEg==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/mdi@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@iconify-json/mdi/-/mdi-1.2.3.tgz#5e4ee9d8c8aaad04381c8cc6c6edbe3327f031b5"
+  integrity sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==
   dependencies:
     "@iconify/types" "*"
 
@@ -497,10 +511,38 @@
   dependencies:
     "@iconify/types" "*"
 
+"@iconify-json/streamline-logos@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@iconify-json/streamline-logos/-/streamline-logos-1.2.0.tgz#8264a916272573d73770ecaa26397623c96ca28b"
+  integrity sha512-eEMC8BvJTCUiR/xdAjKuJwRGnKV5v9Prp2wgONFLKILq1om/5Pz+EUsFXVqYSVeIAUfguaB2tjy1wM7wJbs0IQ==
+  dependencies:
+    "@iconify/types" "*"
+
 "@iconify-json/svg-spinners@^1.2.4":
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/@iconify-json/svg-spinners/-/svg-spinners-1.2.4.tgz#e142f5aa6b36c5b6d99dfe88ef0772bb5c99c4e6"
   integrity sha512-ayn0pogFPwJA1WFZpDnoq9/hjDxN+keeCMyThaX4d3gSJ3y0mdKUxIA/b1YXWGtY9wVtZmxwcvOIeEieG4+JNg==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/tabler@^1.2.27":
+  version "1.2.38"
+  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.2.38.tgz#adb0599c15dc09e884b9d225ba5b2850953bfef5"
+  integrity sha512-9v6ooRU/bKOK/Whv4w2aiK5gBnfCV9Ei+uD1iDDeLu2b+EnF3G3ZKkRKWEOOLG8bJyfKn6XEia6gUQ9oO7cF+Q==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/uil@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@iconify-json/uil/-/uil-1.2.3.tgz#d455746fe32491fa46a884b6d47e4b7a3cc9c76f"
+  integrity sha512-if91+UBhDQc6glPsIaXecGIcXnbQZfEO4Gdv89TV2xQ+V5e9GWbY5rNl2fsKZd8COsRQ5lRQAKimVQVL0CZZVg==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/vscode-icons@^1.2.44":
+  version "1.2.72"
+  resolved "https://registry.yarnpkg.com/@iconify-json/vscode-icons/-/vscode-icons-1.2.72.tgz#180e4b4f963e5bf788413613b3c2f2f35bf9e41f"
+  integrity sha512-IWsfSq21QZtZ8WWNtNm09E9I1PKXNSx9PQnOAD6vWSSNrL4bMDpK5nEbmyNV4XBYuQ/jAc1Foj233C/QtRAQOg==
   dependencies:
     "@iconify/types" "*"
 
@@ -4302,10 +4344,17 @@ slidev-addon-fancy-arrow@^0.16.0:
     vue "^3.5.22"
 
 slidev-theme-alchemmist@^0.1.16:
-  version "0.1.20"
-  resolved "https://registry.yarnpkg.com/slidev-theme-alchemmist/-/slidev-theme-alchemmist-0.1.20.tgz#f5d4b8019a1f998177abf85c3d1f7a216294295f"
-  integrity sha512-ylGvrRL8m2Vo2/nYa46hnPETtiW4uB27V2wLwDaDLP3p+B40/l3og42KqIPKgyUWub+UN1DZum/FfXWug0COwA==
+  version "0.1.22"
+  resolved "https://registry.yarnpkg.com/slidev-theme-alchemmist/-/slidev-theme-alchemmist-0.1.22.tgz#46a63232551cd8231ac45b1accb020e03d1be4de"
+  integrity sha512-ti98KrbCFY065MPw74pV2onE3NOC0BYXJBYkJtJzmOZJRd9dX4NMlLTxIhldSmzCGQdsABOzr/cLDb3PhurS5Q==
   dependencies:
+    "@iconify-json/carbon" "^1.2.18"
+    "@iconify-json/devicon" "^1.2.59"
+    "@iconify-json/mdi" "^1.2.3"
+    "@iconify-json/streamline-logos" "^1.2.0"
+    "@iconify-json/tabler" "^1.2.27"
+    "@iconify-json/uil" "^1.2.3"
+    "@iconify-json/vscode-icons" "^1.2.44"
     codemirror-theme-vars "^0.1.2"
     prism-theme-vars "^0.2.5"
 
