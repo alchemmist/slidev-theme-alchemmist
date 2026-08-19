@@ -1,16 +1,13 @@
 <template>
-  <SlideFrame content-align="center" frame-class="end"
-    ><slot>END</slot></SlideFrame
-  >
+  <div class="alchemmist-layout-frame">
+    <div class="slidev-layout end w-full h-full">
+      <slot>END</slot>
+    </div>
+  </div>
 </template>
 
-<script setup lang="ts">
-import SlideFrame from "../components/internal/SlideFrame.vue";
-</script>
-
-<style scoped>
-:deep(.slidev-layout) {
-  background: #111;
-  color: #fff;
+<style scoped lang="postcss">
+.slidev-layout.end {
+  @apply text-white text-opacity-85 text-xl tracking-widest bg-black h-full text-center grid place-content-center select-none;
 }
 </style>

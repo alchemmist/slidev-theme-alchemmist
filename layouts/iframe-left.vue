@@ -1,44 +1,25 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import SlideFrame from "../components/internal/SlideFrame.vue";
+import { computed } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    allow?: string;
-    gap?: string;
-    sandbox?: string;
-    scale?: number;
-    title?: string;
-    url: string;
-  }>(),
-  {
-    gap: "2rem",
-    scale: 1,
-    title: "Embedded content",
-  },
-);
+const props = defineProps<{
+  url: string
+  scale?: number
+}>()
 
-const frameStyle = computed(() => ({
-  height: `${100 / props.scale}%`,
-  transform: `scale(${props.scale})`,
-  width: `${100 / props.scale}%`,
-}));
+const scaleInvertPercent = computed(() => `${(1 / (props.scale || 1)) * 100}%`)
 </script>
 
 <template>
-  <SlideFrame :padded="false" frame-class="iframe-left">
-    <div class="alchemmist-image-layout" :style="{ gap }">
+  <div class="grid grid-cols-2 w-full h-full">
+    <div relative :style="{ width: scaleInvertPercent, height: scaleInvertPercent }">
       <iframe
-        class="alchemmist-iframe"
+        id="frame" class="w-full h-full"
         :src="url"
-        :title="title"
-        :allow="allow"
-        :sandbox="sandbox"
-        :style="frameStyle"
+        :style="scale ? { transform: `scale(${scale})`, transformOrigin: 'top left' } : {}"
       />
-      <div class="alchemmist-panel-content is-padded">
-        <slot />
-      </div>
     </div>
-  </SlideFrame>
+    <div class="slidev-layout default" v-bind="$attrs">
+      <slot />
+    </div>
+  </div>
 </template>

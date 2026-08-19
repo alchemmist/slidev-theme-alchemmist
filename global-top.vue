@@ -1,32 +1,35 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { useNav, useSlideContext } from "@slidev/client";
-import Pagination from "./components/Pagination.vue";
-import { isChromeVisible, resolveCorner } from "./theme/config";
-import type { SlideChromeFrontmatter, ThemeConfig } from "./theme/config";
-
-const { $slidev } = useSlideContext();
-const { currentSlideRoute } = useNav();
-
-const frontmatter = computed<SlideChromeFrontmatter>(
-  () =>
-    (
-      currentSlideRoute.value?.meta?.slide as
-        { frontmatter?: SlideChromeFrontmatter } | undefined
-    )?.frontmatter ?? {},
-);
-const config = computed<ThemeConfig>(() => $slidev.themeConfigs ?? {});
-const visible = computed(() =>
-  isChromeVisible(
-    "pagination",
-    $slidev.nav.currentPage,
-    $slidev.nav.total,
-    frontmatter.value,
-    config.value,
-  ),
-);
-</script>
-
 <template>
-  <Pagination v-if="visible" :position="resolveCorner(config)" />
+  <Pagination
+    v-if="showPagination"
+    :x="$slidev.themeConfigs.paginationX"
+    :y="$slidev.themeConfigs.paginationY"
+  />
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useNav, useSlideContext } from '@slidev/client'
+import Pagination from './components/Pagination.vue'
+
+const { $slidev } = useSlideContext()
+const { currentSlideRoute } = useNav()
+
+const currentFrontmatter = computed(() => currentSlideRoute.value?.meta?.slide?.frontmatter ?? {})
+
+const showPagination = computed(() => {
+  const isSlidePaginationHidden = currentFrontmatter.value.pagination === false
+    || currentFrontmatter.value.hidePagination === true
+
+  if (isSlidePaginationHidden)
+    return false
+
+  if ($slidev.nav.currentPage === $slidev.nav.total + 1)
+    return false
+
+  const disabledPages = $slidev.themeConfigs.paginationPagesDisabled
+  if (Array.isArray(disabledPages) && disabledPages.includes($slidev.nav.currentPage))
+    return false
+
+  return Boolean($slidev.themeConfigs.paginationX || $slidev.themeConfigs.paginationY)
+})
+</script>

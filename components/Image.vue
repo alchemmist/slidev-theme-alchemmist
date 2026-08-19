@@ -1,33 +1,54 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { resolveAssetUrl } from "../theme/assets";
+import { ref, computed } from "vue";
+import { handleBackground } from "../layoutHelper";
 
-const props = withDefaults(
-  defineProps<{
-    alt?: string;
-    backgroundSize?: "contain" | "cover" | "fill" | "none" | "scale-down";
-    class?: string;
-    src: string;
-    width?: string | number;
-  }>(),
-  {
-    alt: "",
-    backgroundSize: "contain",
-    width: "100%",
-  },
-);
+const props = defineProps({
+  src: { type: String, required: true },
+  alt: { type: String, default: "" },
+  class: { type: String, default: "" },
+  width: { type: String, default: "100%" },
+  backgroundSize: { type: String, default: "contain" },
+  dim: { type: Boolean, default: false },
+  style: { type: Object as () => Record<string, string>, default: () => ({}) },
+});
 
-const source = computed(() => resolveAssetUrl(props.src));
-const width = computed(() =>
-  typeof props.width === "number" ? `${props.width}px` : props.width,
-);
+const resolvedSrc = computed(() => {
+  const base = import.meta.env.BASE_URL || "/"
+  const srcPath = props.src.startsWith("/") ? props.src.slice(1) : props.src
+  return `${base}${srcPath}`
+})
+
+const imgAspect = ref<number | null>(null)
+const loadImage = () => {
+  const img = new Image()
+  img.src = resolvedSrc.value
+  img.onload = () => {
+    imgAspect.value = img.naturalHeight / img.naturalWidth
+  }
+}
+loadImage()
+
+const backgroundStyle = computed(() => {
+  const style: Record<string, string> = {
+    ...handleBackground(resolvedSrc.value, props.dim, props.backgroundSize),
+    width: props.width ?? "100%",
+    ...props.style,
+  }
+
+  if (imgAspect.value) {
+    style.aspectRatio = `${1 / imgAspect.value}`
+  }
+
+  return style
+})
 </script>
 
 <template>
-  <img
-    :src="source"
-    :alt="alt"
-    :class="['alchemmist-image', props.class]"
-    :style="{ width, objectFit: backgroundSize }"
+  <div
+    :class="['slidev-image', props.class]"
+    :style="backgroundStyle"
+    role="img"
+    :aria-label="alt"
   />
 </template>
+

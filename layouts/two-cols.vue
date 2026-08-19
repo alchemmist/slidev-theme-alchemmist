@@ -1,38 +1,53 @@
+<!--
+  Usage:
+
+```md
+---
+layout: two-cols
+---
+
+# Left
+
+This shows on the left
+
+::right::
+
+# Right
+
+This shows on the right
+```
+
+-->
+
 <script setup lang="ts">
-import { computed } from "vue";
-import type { StyleValue } from "vue";
-import SlideFrame from "../components/internal/SlideFrame.vue";
+import { computed, useAttrs } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    class?: string;
-    gap?: string | number;
-    layoutClass?: string;
-    leftClass?: string;
-    leftWidth?: string | number;
-    rightClass?: string;
-  }>(),
-  {
-    gap: "2rem",
-    leftWidth: "1fr",
+const props = defineProps({
+  class: {
+    type: String,
   },
-);
+  layoutClass: {
+    type: String,
+  },
+})
 
-const style = computed<StyleValue>(() => ({
-  "--columns-gap": typeof props.gap === "number" ? `${props.gap}px` : props.gap,
-  "--columns-template": `${typeof props.leftWidth === "number" ? `${props.leftWidth}fr` : props.leftWidth} minmax(0, 1fr)`,
-}));
+const attrs = useAttrs()
+const gap = computed(() => attrs.gap ?? '20px')
 </script>
 
 <template>
-  <SlideFrame :frame-class="['two-cols', layoutClass]">
-    <div class="alchemmist-columns" :style="style">
-      <div :class="['alchemmist-columns__left', props.class, leftClass]">
+  <div class="alchemmist-layout-frame">
+    <div
+      class="slidev-layout two-columns w-full h-full grid grid-cols-2"
+      :class="props.layoutClass"
+      :style="{ columnGap: gap }"
+    >
+      <div class="col-left" :class="props.class">
         <slot />
       </div>
-      <div :class="['alchemmist-columns__right', props.class, rightClass]">
+      <div class="col-right" :class="props.class">
         <slot name="right" />
       </div>
     </div>
-  </SlideFrame>
+  </div>
 </template>

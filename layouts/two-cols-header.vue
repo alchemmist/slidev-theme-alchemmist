@@ -1,40 +1,64 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import type { StyleValue } from "vue";
-import SlideFrame from "../components/internal/SlideFrame.vue";
+import { computed, useAttrs } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    class?: string;
-    gap?: string | number;
-    layoutClass?: string;
-    leftClass?: string;
-    leftWidth?: string | number;
-    rightClass?: string;
-  }>(),
-  {
-    gap: "2rem",
-    leftWidth: "1fr",
-  },
-);
+const props = defineProps({
+  class: String,
+  layoutClass: String,
+})
 
-const style = computed<StyleValue>(() => ({
-  "--columns-gap": typeof props.gap === "number" ? `${props.gap}px` : props.gap,
-  "--columns-template": `${typeof props.leftWidth === "number" ? `${props.leftWidth}fr` : props.leftWidth} minmax(0, 1fr)`,
-}));
+const attrs = useAttrs()
+const gap = computed(() => attrs.gap ?? '20px')
 </script>
 
 <template>
-  <SlideFrame :frame-class="['two-cols-header', layoutClass]">
-    <div class="alchemmist-columns" :style="style">
-      <div class="alchemmist-columns__header"><slot /></div>
-      <div :class="['alchemmist-columns__left', props.class, leftClass]">
+  <div class="alchemmist-layout-frame">
+    <div
+      class="slidev-layout two-cols-header w-full"
+      :class="layoutClass"
+      :style="{ columnGap: gap }"
+    >
+      <div class="col-header">
+        <slot />
+      </div>
+      <div class="col-left" :class="props.class">
         <slot name="left" />
       </div>
-      <div :class="['alchemmist-columns__right', props.class, rightClass]">
+      <div class="col-right" :class="props.class">
         <slot name="right" />
       </div>
-      <div class="alchemmist-columns__bottom"><slot name="bottom" /></div>
+      <div class="col-bottom" :class="props.class">
+        <slot name="bottom" />
+      </div>
     </div>
-  </SlideFrame>
+  </div>
 </template>
+
+<style scoped>
+.two-cols-header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 0;
+  height: auto;
+}
+
+.col-header {
+  grid-column: 1 / 3;
+  align-self: start;
+}
+
+.col-left {
+  grid-column: 1 / 2;
+  align-self: start;
+}
+
+.col-right {
+  grid-column: 2 / 3;
+  align-self: start;
+}
+
+.col-bottom {
+  grid-column: 1 / 3;
+  align-self: end;
+}
+</style>

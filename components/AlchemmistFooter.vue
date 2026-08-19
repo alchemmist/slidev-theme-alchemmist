@@ -7,7 +7,7 @@
           :src="resolvedLogoSrc"
           :alt="resolvedLogoAlt"
           class="slidev-footer-logo"
-        />
+        >
       </slot>
     </div>
 
@@ -20,70 +20,41 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import { useSlideContext } from "@slidev/client";
-import { resolveAssetUrl } from "../theme/assets";
-import type { ThemeConfig } from "../theme/config";
+import { computed } from 'vue'
+import { useSlideContext } from '@slidev/client'
 
 interface FooterProps {
-  hideDate?: boolean;
-  hideLogos?: boolean;
-  logoSrc?: string;
-  logoAlt?: string;
-  date?: string;
+  hideDate?: boolean
+  hideLogos?: boolean
+  logoSrc?: string
+  logoAlt?: string
+  date?: string
 }
 
-const props = defineProps<FooterProps>();
+const props = defineProps<FooterProps>()
 
-const { $slidev, $frontmatter } = useSlideContext();
-const config = computed<ThemeConfig>(() => $slidev.themeConfigs ?? {});
+const { $slidev, $frontmatter } = useSlideContext()
 
 const resolvedLogoSrc = computed(() => {
-  return resolveAssetUrl(
-    props.logoSrc ?? $frontmatter.footerLogo ?? config.value.footerLogo ?? "",
-  );
-});
+  return props.logoSrc ?? $frontmatter.footerLogo ?? $slidev.themeConfigs.footerLogo ?? ''
+})
 
 const resolvedLogoAlt = computed(() => {
-  return (
-    props.logoAlt ??
-    $frontmatter.footerLogoAlt ??
-    config.value.footerLogoAlt ??
-    "Footer logo"
-  );
-});
+  return props.logoAlt ?? $frontmatter.footerLogoAlt ?? $slidev.themeConfigs.footerLogoAlt ?? 'Footer logo'
+})
 
 const resolvedDate = computed(() => {
-  return (
-    props.date ??
-    $frontmatter.date ??
-    (config.value as ThemeConfig & { date?: string }).date ??
-    ""
-  );
-});
+  return props.date ?? $frontmatter.date ?? $slidev.configs.date ?? ''
+})
 
 const hideLogos = computed(() => {
-  return (
-    props.hideLogos ??
-    $frontmatter.hideLogos ??
-    config.value.footerHideLogos ??
-    false
-  );
-});
+  return props.hideLogos ?? $frontmatter.hideLogos ?? $slidev.themeConfigs.footerHideLogos ?? false
+})
 
 const hideDate = computed(() => {
-  return (
-    props.hideDate ??
-    $frontmatter.hideDate ??
-    config.value.footerHideDate ??
-    false
-  );
-});
+  return props.hideDate ?? $frontmatter.hideDate ?? $slidev.themeConfigs.footerHideDate ?? false
+})
 
-const showLeft = computed(
-  () => !hideLogos.value && Boolean(resolvedLogoSrc.value),
-);
-const showRight = computed(
-  () => !hideDate.value && Boolean(resolvedDate.value),
-);
+const showLeft = computed(() => !hideLogos.value && Boolean(resolvedLogoSrc.value))
+const showRight = computed(() => !hideDate.value && Boolean(resolvedDate.value))
 </script>

@@ -1,14 +1,9 @@
 <template>
-  <SlideFrame
-    content-align="center"
-    :content-width="contentWidth"
-    frame-class="section"
-    ><slot
-  /></SlideFrame>
+  <div class="alchemmist-layout-frame">
+    <div class="slidev-layout section w-full h-full grid text-center">
+      <div class="my-auto text-center">
+        <slot />
+      </div>
+    </div>
+  </div>
 </template>
-
-<script setup lang="ts">
-import SlideFrame from "../components/internal/SlideFrame.vue";
-
-defineProps<{ contentWidth?: string | number }>();
-</script>

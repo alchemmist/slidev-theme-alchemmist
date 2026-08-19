@@ -1,6 +1,6 @@
-@import "prism-theme-vars/base.css";
-@import "codemirror-theme-vars/base.css";
-@import "prism-theme-vars/to-codemirror.css";
+@import 'prism-theme-vars/base.css';
+@import 'codemirror-theme-vars/base.css';
+@import 'prism-theme-vars/to-codemirror.css';
 
 :root {
   --prism-font-family: var(--slidev-code-font-family);
@@ -31,8 +31,7 @@ html:not(.dark) {
 html.dark {
   --prism-foreground: #d4cfbf;
   --prism-comment: #758575;
-  --prism-string: #d48372;
-  --prism-literal: #429988;
+  --prism-string: #d48372; --prism-literal: #429988;
   --prism-keyword: #4d9375;
   --prism-boolean: #1c6b48;
   --prism-number: #6394bf;
