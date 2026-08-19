@@ -1,42 +1,38 @@
+<script setup lang="ts">
+import { computed } from "vue";
+
+const props = withDefaults(
+  defineProps<{
+    color?: string;
+    content?: string;
+    monoHead?: boolean;
+    monoText?: boolean;
+    monoTitle?: boolean;
+    title?: string;
+    tone?: "accent" | "neutral" | "success" | "warning" | "danger";
+  }>(),
+  {
+    tone: "neutral",
+  },
+);
+
+const style = computed(() =>
+  props.color ? { "--card-accent": props.color } : undefined,
+);
+</script>
+
 <template>
-  <div class="w-fit bg-white shadow-card p-0 rounded-none">
-    <div 
-      v-if="title" 
-      :class="[monoHead ? 'font-mono' : '', 'px-4 py-2']"
-      :style="{ backgroundColor: headerColor, color: '#000' }"
+  <article class="alchemmist-card" :class="`is-${tone}`" :style="style">
+    <header
+      v-if="title"
+      class="alchemmist-card__title"
+      :class="{ 'mono-text': monoTitle || monoHead }"
     >
       {{ title }}
-    </div>
-    <div :class="['p-4 text-gray-800', monoText ? 'font-mono' : '']">
+    </header>
+    <div class="alchemmist-card__body" :class="{ 'mono-text': monoText }">
       <p v-if="content">{{ content }}</p>
       <slot />
     </div>
-  </div>
+  </article>
 </template>
-
-<script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
-  title: { type: String, default: '' },
-  content: { type: String, default: '' },
-  color: { type: String, default: '#9ca3af' },
-  monoText: { type: Boolean, default: false },
-  monoHead: { type: Boolean, default: false }
-})
-
-const headerColor = computed(() => {
-  const hex = props.color.replace('#','')
-  const r = parseInt(hex.substring(0,2),16)
-  const g = parseInt(hex.substring(2,4),16)
-  const b = parseInt(hex.substring(4,6),16)
-  return `rgba(${r},${g},${b},0.2)`
-})
-</script>
-
-<style scoped>
-.shadow-card {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-</style>
-

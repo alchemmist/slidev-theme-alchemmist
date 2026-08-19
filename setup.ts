@@ -1,5 +1,6 @@
-import GlobalTop from './global-top.vue'
+import GlobalTop from "./global-top.vue";
+import type { App } from "vue";
 
-export default (app: any) => {
-  app.component('GlobalTop', GlobalTop)
-}
+export default (app: App) => {
+  app.component("GlobalTop", GlobalTop);
+};

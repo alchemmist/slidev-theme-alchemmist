@@ -1,47 +1,46 @@
-<template>
-  <div class="flex items-start gap-4 max-w-3xl">
-    <img
-      :src="avatarUrl"
-      :alt="props.author"
-      class="w-25 h-25 rounded-full object-cover"
-    />
-    <div class="flex flex-col border-l-4 border-gray-500 bg-gray-100 p-4">
-      <p class="italic mono-text">«{{ props.text }}»</p>
-      <span class="mt-2 font-semibold text-gray-800 text-sm">{{
-        props.author
-      }}</span>
-      <span class="text-sm text-gray-400" v-if="props.source">
-        {{ props.type }}
-        <a
-          v-if="props.sourceUrl"
-          :href="props.sourceUrl"
-          class="text-gray-500 hover:text-gray-800"
-          >«{{ props.source }}»</a
-        >
-        <span v-else>{{ props.source }}</span
-        >, {{ props.year }}
-      </span>
-    </div>
-  </div>
-</template>
-
-<script setup>
+<script setup lang="ts">
 import { computed } from "vue";
+import { resolveAssetUrl } from "../theme/assets";
 
-const props = defineProps({
-  text: { type: String, required: true },
-  author: { type: String, required: true },
-  source: { type: String, default: "" },
-  sourceUrl: { type: String, default: "" },
-  year: { type: String, default: "" },
-  type: { type: String, default: "Essay" },
-  avatar: { type: String, default: "" },
-});
+const props = withDefaults(
+  defineProps<{
+    author: string;
+    avatar?: string;
+    source?: string;
+    sourceUrl?: string;
+    text?: string;
+    type?: string;
+    year?: string;
+  }>(),
+  {
+    type: "Essay",
+  },
+);
 
-const avatarUrl = computed(() => {
-  if (!props.avatar) return "";
-  return props.avatar.startsWith("/")
-    ? import.meta.env.BASE_URL + props.avatar.slice(1)
-    : props.avatar;
-});
+const avatarUrl = computed(() => resolveAssetUrl(props.avatar));
 </script>
+
+<template>
+  <figure class="alchemmist-quote">
+    <img
+      v-if="avatarUrl"
+      :src="avatarUrl"
+      :alt="author"
+      class="alchemmist-quote__avatar"
+    />
+    <blockquote class="alchemmist-quote__body">
+      <div class="alchemmist-quote__text mono-text">
+        <slot>{{ text }}</slot>
+      </div>
+    </blockquote>
+    <figcaption>
+      <strong>{{ author }}</strong>
+      <span v-if="source" class="alchemmist-quote__source">
+        {{ type }}
+        <a v-if="sourceUrl" :href="sourceUrl">“{{ source }}”</a>
+        <span v-else>“{{ source }}”</span
+        ><template v-if="year">, {{ year }}</template>
+      </span>
+    </figcaption>
+  </figure>
+</template>
