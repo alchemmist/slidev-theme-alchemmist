@@ -21,9 +21,6 @@ const style = computed(() =>
 const gradientStyle = computed(() => {
   const o = Math.min(Math.max(props.opacity, 0), 1);
 
-  const strong = Math.min(o * 1.4, 1);
-  const medium = Math.min(o * 0.9, 1);
-
   return {
     background: `
         radial-gradient(
