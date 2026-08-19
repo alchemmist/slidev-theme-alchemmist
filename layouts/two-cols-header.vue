@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue'
+import { computed, useAttrs } from "vue";
 
 const props = defineProps({
   class: String,
   layoutClass: String,
-})
+});
 
-const attrs = useAttrs()
-const gap = computed(() => attrs.gap ?? '20px')
+const attrs = useAttrs();
+const gap = computed(() => attrs.gap ?? "20px");
 </script>
 
 <template>

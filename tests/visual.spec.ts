@@ -1,13 +1,13 @@
 import { expect, test } from "@playwright/test";
 
-test("renders theme chrome and shared frame", async ({ page }) => {
+test("preserves the original intro and chrome", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator(".alchemmist-frame.cover")).toBeVisible();
+  await expect(page.locator(".slidev-layout.intro")).toBeVisible();
+  await expect(page).toHaveScreenshot("intro.png", { animations: "disabled" });
   await page.keyboard.press("ArrowRight");
-  await expect(page.locator(".alchemmist-pagination")).toContainText("2");
+  await expect(page.getByLabel("Slide number")).toContainText("2");
   await expect(page.locator(".slidev-footer")).toBeVisible();
-  await expect(page.locator(".alchemmist-frame.section")).toHaveCSS(
-    "background-color",
-    "rgba(0, 0, 0, 0)",
-  );
+  await expect(page).toHaveScreenshot("center.png", {
+    animations: "disabled",
+  });
 });

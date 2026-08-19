@@ -45,7 +45,6 @@
 .slidev-layout.cover,
 .slidev-layout.intro {
   @apply h-full grid;
-
 }
 
 .slidev-layout.fact {
@@ -86,4 +85,57 @@
   justify-content: center;
   align-items: center;
   height: calc(100% - var(--alchemmist-footer-height, 0px));
+}
+
+.alchemmist-frame {
+  align-items: center;
+  display: flex;
+  height: calc(100% - var(--alchemmist-footer-height, 0px));
+  justify-content: center;
+  width: 100%;
+}
+
+.alchemmist-frame__content {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+.alchemmist-frame__content:not(.is-padded) {
+  padding: 0;
+}
+
+.alchemmist-frame__content.is-center {
+  display: grid;
+}
+
+.alchemmist-columns {
+  display: grid;
+  gap: var(--columns-gap, 20px);
+  grid-template-columns: var(--columns-template, repeat(2, minmax(0, 1fr)));
+  min-height: 0;
+}
+
+.alchemmist-columns__header,
+.alchemmist-columns__bottom {
+  grid-column: 1 / -1;
+}
+
+.alchemmist-image-layout {
+  display: grid;
+  grid-template-columns: var(--image-columns, repeat(2, minmax(0, 1fr)));
+  height: 100%;
+  width: 100%;
+}
+
+.alchemmist-image-panel {
+  background-position: center;
+  min-height: 0;
+}
+
+.alchemmist-iframe {
+  border: 0;
+  height: 100%;
+  transform-origin: top left;
+  width: 100%;
 }

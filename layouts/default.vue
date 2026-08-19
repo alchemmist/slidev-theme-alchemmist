@@ -8,13 +8,13 @@
 </template>
 
 <script setup lang="ts">
-import Pagination from '../components/Pagination.vue'
-import { computed } from 'vue'
-import { useSlideContext } from '@slidev/client'
+import Pagination from "../components/Pagination.vue";
+import { computed } from "vue";
+import { useSlideContext } from "@slidev/client";
 
-const ctx = useSlideContext()
+const ctx = useSlideContext();
 
-const date = computed(() => ctx.frontmatter?.date ?? '')
+const date = computed(() => ctx.frontmatter?.date ?? "");
 </script>
 
 <style scoped>

@@ -30,7 +30,7 @@ pagination: false
 <span class="mono-text">English exam, CU, winter 2026</span>
 
 <div class="abs-br m-6 text-xl"> 
-  <a href="https://github.com/alchemmist/talks" target="_blank" class="slidev-icon-btn">
+  <a href="https://github.com/alchemmist/talks" target="_blank" class="slidev-icon-btn" aria-label="Talks on GitHub">
     <carbon:logo-github />
   </a>
 </div>

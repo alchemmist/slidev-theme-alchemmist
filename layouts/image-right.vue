@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useAttrs, computed } from 'vue'
-import { handleBackground, resolveAssetUrl } from '../layoutHelper'
+import { useAttrs, computed } from "vue";
+import { handleBackground, resolveAssetUrl } from "../layoutHelper";
 
 const props = defineProps({
   image: {
@@ -9,34 +9,31 @@ const props = defineProps({
   class: {
     type: String,
   },
-})
+});
 
-const attrs = useAttrs()
+const attrs = useAttrs();
 
 const backgroundPosition = computed(
-  () => attrs['background-position'] ?? 'left'
-)
+  () => attrs["background-position"] ?? "left",
+);
 
-const hasShadow = computed(() => !!attrs['shadow'])
+const hasShadow = computed(() => !!attrs["shadow"]);
 
 const style = computed(() => {
-  if (!props.image)
-    return {}
+  if (!props.image) return {};
 
   const baseStyle = handleBackground(
     resolveAssetUrl(props.image),
     false,
-    'cover', // ✅ ВСЕГДА cover
-  )
+    "cover", // ✅ ВСЕГДА cover
+  );
 
   return {
     ...baseStyle,
     backgroundPosition: `${backgroundPosition.value} center`,
-    ...(hasShadow.value
-      ? { boxShadow: '10px 0 20px rgba(0,0,0,0.3)' }
-      : {}),
-  }
-})
+    ...(hasShadow.value ? { boxShadow: "10px 0 20px rgba(0,0,0,0.3)" } : {}),
+  };
+});
 </script>
 
 <template>

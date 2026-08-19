@@ -1,54 +1,49 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import { handleBackground } from "../layoutHelper";
+import { computed, ref } from "vue";
+import { resolveAssetUrl } from "../theme/assets";
+import { backgroundStyle } from "../theme/assets";
 
-const props = defineProps({
-  src: { type: String, required: true },
-  alt: { type: String, default: "" },
-  class: { type: String, default: "" },
-  width: { type: String, default: "100%" },
-  backgroundSize: { type: String, default: "contain" },
-  dim: { type: Boolean, default: false },
-  style: { type: Object as () => Record<string, string>, default: () => ({}) },
-});
+const props = withDefaults(
+  defineProps<{
+    alt?: string;
+    backgroundSize?: "contain" | "cover" | "fill" | "none" | "scale-down";
+    class?: string;
+    src: string;
+    width?: string | number;
+  }>(),
+  {
+    alt: "",
+    backgroundSize: "contain",
+    width: "100%",
+  },
+);
 
-const resolvedSrc = computed(() => {
-  const base = import.meta.env.BASE_URL || "/"
-  const srcPath = props.src.startsWith("/") ? props.src.slice(1) : props.src
-  return `${base}${srcPath}`
-})
+const source = computed(() => resolveAssetUrl(props.src));
+const width = computed(() =>
+  typeof props.width === "number" ? `${props.width}px` : props.width,
+);
+const aspect = ref<number>();
 
-const imgAspect = ref<number | null>(null)
-const loadImage = () => {
-  const img = new Image()
-  img.src = resolvedSrc.value
-  img.onload = () => {
-    imgAspect.value = img.naturalHeight / img.naturalWidth
-  }
+if (typeof window !== "undefined") {
+  const image = new window.Image();
+  image.src = source.value;
+  image.onload = () => {
+    aspect.value = image.naturalWidth / image.naturalHeight;
+  };
 }
-loadImage()
 
-const backgroundStyle = computed(() => {
-  const style: Record<string, string> = {
-    ...handleBackground(resolvedSrc.value, props.dim, props.backgroundSize),
-    width: props.width ?? "100%",
-    ...props.style,
-  }
-
-  if (imgAspect.value) {
-    style.aspectRatio = `${1 / imgAspect.value}`
-  }
-
-  return style
-})
+const style = computed(() => ({
+  ...backgroundStyle(source.value, { size: props.backgroundSize }),
+  aspectRatio: aspect.value,
+  width: width.value,
+}));
 </script>
 
 <template>
   <div
     :class="['slidev-image', props.class]"
-    :style="backgroundStyle"
+    :style="style"
     role="img"
     :aria-label="alt"
   />
 </template>
-

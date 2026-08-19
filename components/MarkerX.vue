@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 defineProps<{
+  color?: string;
   title: string;
-  color: string;
 }>();
 </script>
