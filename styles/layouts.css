@@ -1,89 +1,74 @@
-.slidev-layout {
-  h1 + p {
-    @apply -mt-2 opacity-50 mb-4;
-  }
-
-  p + h2,
-  ul + h2,
-  table + h2 {
-    @apply mt-10;
-  }
-
-  h1 {
-    @apply text-4xl mb-4 -ml-[0.05em];
-  }
-
-  h2 {
-    @apply text-3xl;
-  }
-
-  h3 {
-    @apply text-2xl;
-  }
-
-  h4 {
-    @apply text-xl;
-  }
-
-  h5 {
-    @apply text-base;
-  }
-
-  h6 {
-    @apply text-sm pt-1 uppercase tracking-widest font-500 -ml-[0.05em];
-  }
-
-  h6:not(.opacity-100) {
-    @apply opacity-40;
-  }
-  padding-bottom: 0;
-  padding-top: 3rem;
-  padding-left: 7rem;
-  padding-right: 7rem;
-}
-
-.slidev-layout.cover,
-.slidev-layout.intro {
-  @apply h-full grid;
-
-}
-
-.slidev-layout.fact {
-  @apply text-center grid h-full;
-  h1 {
-    @apply text-8xl font-700;
-  }
-  h1 + p {
-    @apply font-700 text-2xl;
-  }
-}
-.slidev-layout.statement {
-  @apply text-center grid h-full;
-
-  h1 {
-    @apply text-6xl font-700;
-  }
-}
-
-.slidev-layout.image-right {
+.alchemmist-frame {
+  align-items: stretch;
   display: flex;
-  flex-direction: column;
+  height: calc(100% - var(--alchemmist-footer-height));
   justify-content: center;
+  width: 100%;
 }
 
-.slidev-layout.section {
-  h1 {
-    @apply text-6xl font-500 leading-20;
-  }
+.alchemmist-frame__content {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
 }
 
-.slidev-layout.two-cols {
-  gap: 1cm;
+.alchemmist-frame__content.is-padded {
+  padding: var(--alchemmist-padding-block) var(--alchemmist-padding-inline);
 }
 
-.alchemmist-layout-frame {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100% - var(--alchemmist-footer-height, 0px));
+.alchemmist-frame__content.is-center {
+  align-content: center;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.alchemmist-frame__content.is-end {
+  align-content: end;
+}
+
+.slidev-layout.cover h1,
+.slidev-layout.intro h1 {
+  font-size: 4rem;
+}
+
+.slidev-layout.fact h1 {
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+.slidev-layout.statement h1,
+.slidev-layout.section h1 {
+  font-size: 4.5rem;
+}
+
+.alchemmist-columns {
+  display: grid;
+  gap: var(--columns-gap, 2rem);
+  grid-template-columns: var(--columns-template, repeat(2, minmax(0, 1fr)));
+  min-height: 0;
+}
+
+.alchemmist-columns__header,
+.alchemmist-columns__bottom {
+  grid-column: 1 / -1;
+}
+
+.alchemmist-image-layout {
+  display: grid;
+  grid-template-columns: var(--image-columns, repeat(2, minmax(0, 1fr)));
+  height: 100%;
+  width: 100%;
+}
+
+.alchemmist-image-panel {
+  background-position: center;
+  min-height: 0;
+}
+
+.alchemmist-iframe {
+  border: 0;
+  height: 100%;
+  transform-origin: top left;
+  width: 100%;
 }

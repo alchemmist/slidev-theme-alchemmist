@@ -1,51 +1,29 @@
-name: Release
+name: release
 
 on:
   push:
-    tags:
-      - "v*.*.*"
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
         with:
-          version: 10
-
-      - name: Extract version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
-
-      - name: Pack tarball
-        run: pnpm pack
-
-      - name: Generate source.zip
-        run: git archive -o source.zip HEAD
-
-      - name: Generate changelog
-        run: |
-          npx auto-changelog -p --unreleased-only
-          echo "CHANGELOG_CONTENT<<EOF" >> $GITHUB_ENV
-          cat CHANGELOG.md >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm pack
+      - run: git archive -o source.zip HEAD
+      - uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
-          name: ${{ github.ref_name }}
-          body: |
-            📦 NPM: https://www.npmjs.com/package/slidev-theme-alchemmist/v/${{ env.VERSION }}
-
-            ${{ env.CHANGELOG_CONTENT }}
+          body_path: CHANGELOG.md
           files: |
             *.tgz
             source.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-

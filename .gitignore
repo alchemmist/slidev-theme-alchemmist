@@ -3,3 +3,4 @@ node_modules
 example/pnpm-lock.yaml
 example/pnpm-workspace.yaml
 dist
+test-results

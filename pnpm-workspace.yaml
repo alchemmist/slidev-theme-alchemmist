@@ -1,0 +1,11 @@
+packages:
+  - example
+allowBuilds:
+  "@playwright/browser-chromium": true
+  esbuild: true
+  playwright-chromium: true
+minimumReleaseAgeExclude:
+  - "@slidev/cli@52.19.1"
+  - "@slidev/client@52.19.1"
+  - "@slidev/parser@52.19.1"
+  - "@slidev/types@52.19.1"

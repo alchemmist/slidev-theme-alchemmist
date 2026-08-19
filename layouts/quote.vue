@@ -1,23 +1,14 @@
 <template>
-  <div class="alchemmist-layout-frame">
-    <div class="slidev-layout quote w-full h-full">
-      <slot />
-      <slot name="footer" />
-    </div>
-  </div>
+  <SlideFrame
+    content-align="center"
+    :content-width="contentWidth"
+    frame-class="quote"
+    ><slot
+  /></SlideFrame>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import { useSlideContext } from "@slidev/client";
+import SlideFrame from "../components/internal/SlideFrame.vue";
 
-const ctx = useSlideContext();
-
-const date = computed(() => ctx.frontmatter?.date ?? "");
+defineProps<{ contentWidth?: string | number }>();
 </script>
-
-<style scoped>
-.quote {
-  position: relative;
-}
-</style>

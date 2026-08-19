@@ -1,51 +1,60 @@
 <script setup lang="ts">
-import { useAttrs, computed } from 'vue'
-import { handleBackground, resolveAssetUrl } from '../layoutHelper'
+import { computed, useAttrs } from "vue";
+import SlideFrame from "../components/internal/SlideFrame.vue";
+import { backgroundStyle } from "../theme/assets";
 
-const props = defineProps({
-  image: {
-    type: String,
+const props = withDefaults(
+  defineProps<{
+    class?: string;
+    image?: string;
+    imagePosition?: string;
+    imageShadow?: boolean;
+    imageSize?: string;
+    leftWidth?: string | number;
+  }>(),
+  {
+    imagePosition: "center",
+    imageSize: "cover",
+    leftWidth: "1fr",
   },
-  class: {
-    type: String,
-  },
-})
+);
 
-const attrs = useAttrs()
-
-const backgroundPosition = computed(
-  () => attrs['background-position'] ?? 'left'
-)
-
-const hasShadow = computed(() => !!attrs['shadow'])
-
-const style = computed(() => {
-  if (!props.image)
-    return {}
-
-  const baseStyle = handleBackground(
-    resolveAssetUrl(props.image),
-    false,
-    'cover', // ✅ ВСЕГДА cover
-  )
-
-  return {
-    ...baseStyle,
-    backgroundPosition: `${backgroundPosition.value} center`,
-    ...(hasShadow.value
-      ? { boxShadow: '10px 0 20px rgba(0,0,0,0.3)' }
-      : {}),
-  }
-})
+const attrs = useAttrs();
+const legacyPosition = computed(
+  () => attrs["background-position"] as string | undefined,
+);
+const legacyShadow = computed(
+  () => attrs.shadow === true || attrs.shadow === "true",
+);
+const imageStyle = computed(() => ({
+  ...backgroundStyle(props.image, {
+    position: props.imagePosition ?? legacyPosition.value,
+    size: props.imageSize,
+  }),
+  boxShadow:
+    props.imageShadow || legacyShadow.value
+      ? "-0.6rem 0 1.4rem rgb(0 0 0 / 18%)"
+      : undefined,
+}));
+const columns = computed(
+  () =>
+    `${typeof props.leftWidth === "number" ? `${props.leftWidth}fr` : props.leftWidth} minmax(0, 1fr)`,
+);
 </script>
 
 <template>
-  <div class="alchemmist-layout-frame">
-    <div class="grid grid-cols-2 w-full h-full auto-rows-fr">
-      <div class="slidev-layout image-right" :class="props.class">
+  <SlideFrame :padded="false" frame-class="image-right">
+    <div
+      class="alchemmist-image-layout"
+      :style="{ '--image-columns': columns }"
+    >
+      <div
+        class="slidev-layout alchemmist-frame__content is-padded"
+        :class="props.class"
+      >
         <slot />
       </div>
-      <div class="w-full h-full" :style="style" />
+      <div class="alchemmist-image-panel" :style="imageStyle" />
     </div>
-  </div>
+  </SlideFrame>
 </template>
