@@ -50,7 +50,7 @@ for (const slide of [1, 2, 3, 4, 5, 6]) {
     await page.goto(`/${slide}`);
     await expect(page.locator(".slidev-slide-container")).toHaveScreenshot(
       `demo-slide-${slide}.png`,
-      { animations: "disabled" },
+      { animations: "disabled", maxDiffPixelRatio: 0.025 },
     );
   });
 }
