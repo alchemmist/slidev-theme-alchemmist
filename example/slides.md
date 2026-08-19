@@ -16,49 +16,51 @@ pagination: false
 
 # Alchemmist
 
-An academic engineering theme for Slidev
+An opinionated Slidev theme for technical ideas,<br>designed to make the argument visible.
 
-<SectionMarker label="v0.3.0" />
+<SectionMarker label="academic · engineering · precise" />
 
 ---
 layout: section
 ---
 
-# A small, stable vocabulary
+# One system.<br>Many kinds of argument.
 
-Layouts and components share spacing, typography, color and chrome.
+Layouts, components and chrome share a deliberate visual grammar.
 
 ---
 layout: two-cols-header
 ---
 
-# Two columns with a real header
+# Structure without sameness
 
 ::left::
 
-<Card title="Deep defaults" color="#5d3fd3">
-Readable typography, deliberate rhythm and a restrained accent system.
+<Card title="01 · Deep defaults" color="#5d3fd3">
+Presentation-scale typography, deliberate rhythm and a restrained accent system.
 </Card>
 
 ::right::
 
 <Callout type="tip" title="Deck-owned content">
-The theme owns presentation; your repository owns slides and assets.
+The theme owns presentation. Your repository keeps the story, slides and assets.
 </Callout>
 
 ::bottom::
 
-Use `gap` and `leftWidth` only when the content needs them.
+The defaults do the routine work. `gap` and `leftWidth` remain available when the story needs a different cadence.
 
 ---
 layout: image-right
 image: /assets/alchemmist-logo.svg
 imageWidth: 38%
+imageSize: contain
+background-position: center
 ---
 
-# Media layouts
+# Media stays<br>inside the frame
 
-Images and iframes resolve correctly under nested GitHub Pages base paths.
+Assets resolve correctly under nested GitHub Pages paths and retain their intended composition.
 
 - `image-left`, `image-right`, `image`
 - `iframe-left`, `iframe-right`, `iframe`
@@ -69,7 +71,7 @@ layout: quote
 ---
 
 <Quote
-  text="A theme should reduce decisions without erasing authorship."
+  text="A theme should reduce the number of decisions without erasing the author’s voice."
   author="Alchemmist"
   source="Design principle"
   year="2026"
@@ -83,4 +85,4 @@ pagination: false
 
 # Build the argument.
 
-## Let the theme carry the rhythm.
+## Let the theme carry the rhythm, hierarchy and focus.

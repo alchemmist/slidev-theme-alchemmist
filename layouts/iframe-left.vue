@@ -36,7 +36,7 @@ const frameStyle = computed(() => ({
         :sandbox="sandbox"
         :style="frameStyle"
       />
-      <div class="slidev-layout alchemmist-frame__content is-padded">
+      <div class="alchemmist-panel-content is-padded">
         <slot />
       </div>
     </div>

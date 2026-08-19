@@ -28,7 +28,7 @@ const frameStyle = computed(() => ({
 <template>
   <SlideFrame :padded="false" frame-class="iframe-right">
     <div class="alchemmist-image-layout" :style="{ gap }">
-      <div class="slidev-layout alchemmist-frame__content is-padded">
+      <div class="alchemmist-panel-content is-padded">
         <slot />
       </div>
       <iframe

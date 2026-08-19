@@ -10,6 +10,7 @@ const props = withDefaults(
     imagePosition?: string;
     imageShadow?: boolean;
     imageSize?: string;
+    imageWidth?: string | number;
     leftWidth?: string | number;
   }>(),
   {
@@ -28,7 +29,7 @@ const legacyShadow = computed(
 );
 const imageStyle = computed(() => ({
   ...backgroundStyle(props.image, {
-    position: props.imagePosition ?? legacyPosition.value,
+    position: legacyPosition.value ?? props.imagePosition,
     size: props.imageSize,
   }),
   boxShadow:
@@ -36,10 +37,17 @@ const imageStyle = computed(() => ({
       ? "-0.6rem 0 1.4rem rgb(0 0 0 / 18%)"
       : undefined,
 }));
-const columns = computed(
-  () =>
-    `${typeof props.leftWidth === "number" ? `${props.leftWidth}fr` : props.leftWidth} minmax(0, 1fr)`,
-);
+const columns = computed(() => {
+  const left =
+    typeof props.leftWidth === "number"
+      ? `${props.leftWidth}fr`
+      : props.leftWidth;
+  const right =
+    typeof props.imageWidth === "number"
+      ? `${props.imageWidth}px`
+      : (props.imageWidth ?? "minmax(0, 1fr)");
+  return `${left} ${right}`;
+});
 </script>
 
 <template>
@@ -48,10 +56,7 @@ const columns = computed(
       class="alchemmist-image-layout"
       :style="{ '--image-columns': columns }"
     >
-      <div
-        class="slidev-layout alchemmist-frame__content is-padded"
-        :class="props.class"
-      >
+      <div class="alchemmist-panel-content is-padded" :class="props.class">
         <slot />
       </div>
       <div class="alchemmist-image-panel" :style="imageStyle" />

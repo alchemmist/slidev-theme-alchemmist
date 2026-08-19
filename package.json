@@ -1,6 +1,6 @@
 {
   "name": "slidev-theme-alchemmist",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "An academic engineering theme for Slidev",
   "type": "module",
   "packageManager": "pnpm@11.22.0",

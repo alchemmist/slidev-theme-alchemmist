@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, useAttrs } from "vue";
 import SlideFrame from "../components/internal/SlideFrame.vue";
 import { backgroundStyle } from "../theme/assets";
 
@@ -10,6 +10,7 @@ const props = withDefaults(
     imagePosition?: string;
     imageShadow?: boolean;
     imageSize?: string;
+    imageWidth?: string | number;
     leftWidth?: string | number;
   }>(),
   {
@@ -19,17 +20,30 @@ const props = withDefaults(
   },
 );
 
+const attrs = useAttrs();
+const legacyPosition = computed(
+  () => attrs["background-position"] as string | undefined,
+);
+const legacyShadow = computed(
+  () => attrs.shadow === true || attrs.shadow === "true",
+);
 const imageStyle = computed(() => ({
   ...backgroundStyle(props.image, {
-    position: props.imagePosition,
+    position: legacyPosition.value ?? props.imagePosition,
     size: props.imageSize,
   }),
-  boxShadow: props.imageShadow ? "0.6rem 0 1.4rem rgb(0 0 0 / 18%)" : undefined,
+  boxShadow:
+    props.imageShadow || legacyShadow.value
+      ? "0.6rem 0 1.4rem rgb(0 0 0 / 18%)"
+      : undefined,
 }));
-const columns = computed(
-  () =>
-    `${typeof props.leftWidth === "number" ? `${props.leftWidth}fr` : props.leftWidth} minmax(0, 1fr)`,
-);
+const columns = computed(() => {
+  const image =
+    typeof props.imageWidth === "number"
+      ? `${props.imageWidth}px`
+      : (props.imageWidth ?? props.leftWidth);
+  return `${image} minmax(0, 1fr)`;
+});
 </script>
 
 <template>
@@ -39,10 +53,7 @@ const columns = computed(
       :style="{ '--image-columns': columns }"
     >
       <div class="alchemmist-image-panel" :style="imageStyle" />
-      <div
-        class="slidev-layout alchemmist-frame__content is-padded"
-        :class="props.class"
-      >
+      <div class="alchemmist-panel-content is-padded" :class="props.class">
         <slot />
       </div>
     </div>
