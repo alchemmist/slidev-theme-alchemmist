@@ -1,36 +1,22 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import SlideFrame from "../components/internal/SlideFrame.vue";
-import { backgroundStyle } from "../theme/assets";
+import { handleBackground } from "../layoutHelper";
 
-const props = withDefaults(
-  defineProps<{
-    background?: string;
-    backgroundDim?: number | boolean;
-    backgroundPosition?: string;
-    backgroundSize?: string;
-    contentWidth?: string | number;
-  }>(),
-  {
-    backgroundDim: true,
+const props = defineProps({
+  background: {
+    default: "",
   },
-);
+});
 
-const style = computed(() =>
-  backgroundStyle(props.background, {
-    dim: props.backgroundDim,
-    position: props.backgroundPosition,
-    size: props.backgroundSize,
-  }),
-);
+const style = computed(() => handleBackground(props.background, true));
 </script>
 
 <template>
-  <SlideFrame
-    content-align="center"
-    :content-width="contentWidth"
-    frame-class="cover"
-    :style="style"
-    ><slot
-  /></SlideFrame>
+  <div class="alchemmist-layout-frame">
+    <div class="slidev-layout cover w-full" :style="style">
+      <div class="my-auto w-full">
+        <slot />
+      </div>
+    </div>
+  </div>
 </template>

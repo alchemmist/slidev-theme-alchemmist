@@ -12,27 +12,38 @@ const props = withDefaults(
     tone?: "accent" | "neutral" | "success" | "warning" | "danger";
   }>(),
   {
+    color: "#9ca3af",
     tone: "neutral",
   },
 );
 
-const style = computed(() =>
-  props.color ? { "--card-accent": props.color } : undefined,
-);
+const headerColor = computed(() => {
+  const hex = props.color.replace("#", "");
+  const r = Number.parseInt(hex.substring(0, 2), 16);
+  const g = Number.parseInt(hex.substring(2, 4), 16);
+  const b = Number.parseInt(hex.substring(4, 6), 16);
+  return `rgba(${r},${g},${b},0.2)`;
+});
 </script>
 
 <template>
-  <article class="alchemmist-card" :class="`is-${tone}`" :style="style">
-    <header
+  <div class="w-fit bg-white shadow-card p-0 rounded-none">
+    <div
       v-if="title"
-      class="alchemmist-card__title"
-      :class="{ 'mono-text': monoTitle || monoHead }"
+      :class="[monoTitle || monoHead ? 'font-mono' : '', 'px-4 py-2']"
+      :style="{ backgroundColor: headerColor, color: '#000' }"
     >
       {{ title }}
-    </header>
-    <div class="alchemmist-card__body" :class="{ 'mono-text': monoText }">
+    </div>
+    <div :class="['p-4 text-gray-800', monoText ? 'font-mono' : '']">
       <p v-if="content">{{ content }}</p>
       <slot />
     </div>
-  </article>
+  </div>
 </template>
+
+<style scoped>
+.shadow-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+</style>

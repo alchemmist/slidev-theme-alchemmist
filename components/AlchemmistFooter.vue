@@ -57,6 +57,7 @@ const resolvedDate = computed(() => {
   return (
     props.date ??
     $frontmatter.date ??
+    $slidev.configs.date ??
     (config.value as ThemeConfig & { date?: string }).date ??
     ""
   );

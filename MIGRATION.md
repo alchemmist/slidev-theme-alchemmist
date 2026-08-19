@@ -1,22 +1,22 @@
 # Migrating to 0.3
 
-Version 0.3 centralizes slide chrome, spacing and media behavior while keeping the common 0.1 component names available.
+Version 0.3.1 adds centralized slide chrome, asset handling and new component names while preserving the visual output and layout markup of 0.1 decks.
 
 ## Requirements
 
 - Use Node 24 or newer.
 - Use Slidev 52.
-- Replace Git dependencies with `slidev-theme-alchemmist@^0.3.0`.
+- Replace Git dependencies with `slidev-theme-alchemmist@^0.3.1`.
 
 ## Deck frontmatter
 
-Prefer `paginationPosition: top-right` over the legacy `paginationX` and `paginationY` pair. Configure the footer once with `footer`, `footerLogo` and `footerComponent`; remove repeated `<AlchemmistFooter>` instances from slides.
+`paginationPosition: top-right` is available alongside the legacy `paginationX` and `paginationY` pair. The old options remain supported. A footer can be configured once with `footer`, `footerLogo` and `footerComponent`, but existing per-slide footer components do not need to be migrated.
 
 ## Content
 
-Replace `MarkerX` with `SectionMarker` when editing a slide. Replace `GitHubAlert` with `Callout`. Both old names remain adapters in 0.3.
+`SectionMarker` and `Callout` are available for new slides. `MarkerX` and `GitHubAlert` remain supported, so existing content does not need to change.
 
-Remove CSS that reaches into `.slidev-layout`, `.my-auto`, component internals or fixed footer heights. Use layout props such as `contentWidth`, `gap`, `leftWidth`, `imageWidth`, `imagePosition` and `imageSize` instead.
+Keep deck-specific CSS that targets the established `.slidev-layout` and `.my-auto` structure. Version 0.3.1 intentionally preserves these compatibility seams.
 
 ## Assets
 

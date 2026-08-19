@@ -22,8 +22,12 @@ export default tseslint.config(
     languageOptions: {
       globals: {
         document: "readonly",
+        getComputedStyle: "readonly",
+        HTMLDivElement: "readonly",
         HTMLElement: "readonly",
+        MutationObserver: "readonly",
         ResizeObserver: "readonly",
+        window: "readonly",
       },
       parserOptions: {
         parser: tseslint.parser,

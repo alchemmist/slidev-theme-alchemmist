@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/slidev-theme-alchemmist)](https://www.npmjs.com/package/slidev-theme-alchemmist) [![demo](https://img.shields.io/badge/demo-GitHub%20Pages-5d3fd3)](https://alchemmist.github.io/slidev-theme-alchemmist/)
 
-An academic engineering theme for Slidev: calm typography, semantic color tokens, predictable layouts, reusable content components, automatic pagination and a configurable footer.
+An academic engineering theme for Slidev with restrained typography, stable layouts, reusable content components, automatic pagination and a configurable footer. Version 0.3.1 preserves the original 0.1 visual design.
 
 ## Install
 
@@ -38,6 +38,8 @@ Set `pagination: false` or `footer: false` in a slide frontmatter block to hide 
 `default`, `center`, `cover`, `intro`, `section`, `statement`, `fact`, `quote`, `end`, `full`, `two-cols`, `two-cols-header`, `image`, `image-left`, `image-right`, `iframe`, `iframe-left`, and `iframe-right`.
 
 Media paths beginning with `/` are resolved against the configured Vite base path, so the same deck works locally and on GitHub Pages.
+
+Existing layout markup and styling from 0.1 remain visually compatible. New configuration and components are additive.
 
 ## Components
 

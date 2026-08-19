@@ -1,7 +1,5 @@
 <template>
-  <SlideFrame :padded="false" frame-class="full"><slot /></SlideFrame>
+  <div class="slidev-layout full w-full h-full">
+    <slot class="w-full h-full" />
+  </div>
 </template>
-
-<script setup lang="ts">
-import SlideFrame from "../components/internal/SlideFrame.vue";
-</script>

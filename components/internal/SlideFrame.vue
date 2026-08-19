@@ -23,8 +23,8 @@ const width = computed(() => {
 <template>
   <div class="alchemmist-frame" :class="frameClass">
     <div
-      class="slidev-layout alchemmist-frame__content"
-      :class="[`is-${contentAlign}`, { 'is-padded': padded }]"
+      class="slidev-layout alchemmist-frame__content w-full"
+      :class="[frameClass, `is-${contentAlign}`, { 'is-padded': padded }]"
       :style="{ maxWidth: width }"
     >
       <slot />

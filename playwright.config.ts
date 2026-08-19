@@ -3,9 +3,9 @@ import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: "tests",
   testMatch: /.*\.spec\.ts/,
-  snapshotPathTemplate: "{testDir}/{testFilePath}-snapshots/{arg}{ext}",
   use: {
     baseURL: "http://127.0.0.1:4173",
+    reducedMotion: "reduce",
     viewport: { width: 1280, height: 720 },
   },
   webServer: {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import Marker from "./Marker.vue";
 
 const props = withDefaults(
   defineProps<{
@@ -18,10 +19,5 @@ const style = computed(() =>
 </script>
 
 <template>
-  <span
-    class="alchemmist-section-marker"
-    :class="`is-${tone}`"
-    :style="style"
-    >{{ label }}</span
-  >
+  <Marker :class="`is-${tone}`" :style="style">{{ label }}</Marker>
 </template>

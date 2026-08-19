@@ -2,11 +2,11 @@
 
 ## 0.3.1
 
-- Reworked the visual system with presentation-scale typography, distinct layout compositions and stronger component hierarchy.
-- Fixed nested Slidev layout nodes that pushed media and iframe panels outside the active slide.
-- Restored `imageWidth`, `background-position` and `shadow` compatibility for image layouts.
-- Rebuilt the demo and added geometry, screenshot and accessibility regression coverage.
-- Verified production builds against the EOSP and Talks decks.
+- Restored the original 0.1 visual design and layout geometry.
+- Kept the 0.3 configuration, asset resolution and component APIs without changing existing deck rendering.
+- Preserved legacy layout markup, footer behavior, pagination spacing and component dimensions.
+- Added screenshot regression coverage for the original intro and center layouts.
+- Verified all 32 EOSP slides and all 7 Talks slides against pre-refactor screenshots.
 
 ## 0.3.0
 
@@ -16,3 +16,5 @@
 - Added light, dark, reduced-motion and print styling.
 - Preserved `MarkerX`, `GitHubAlert` and disabled-page configuration as compatibility adapters.
 - Reduced the published font payload and added package, type, unit, build and format gates.
+
+The visual changes in this release were reverted in 0.3.1.
