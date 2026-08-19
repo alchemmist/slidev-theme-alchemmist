@@ -19,15 +19,16 @@
 }
 
 :root {
-  --alchemmist-canvas: #faf9f7;
-  --alchemmist-surface: #ffffff;
-  --alchemmist-surface-elevated: #ffffff;
-  --alchemmist-text: #1d1b20;
-  --alchemmist-muted: #69656f;
-  --alchemmist-border: #d9d5de;
+  --alchemmist-canvas: #f6f2ea;
+  --alchemmist-surface: #fffdf8;
+  --alchemmist-surface-elevated: #fffdf8;
+  --alchemmist-text: #211d2b;
+  --alchemmist-muted: #716b79;
+  --alchemmist-border: #d9d1c5;
   --alchemmist-accent: var(--slidev-theme-accent, #5d3fd3);
-  --alchemmist-code: #f0edf4;
-  --alchemmist-shadow: 0 0.5rem 1.5rem rgb(29 27 32 / 10%);
+  --alchemmist-accent-strong: #4724a8;
+  --alchemmist-code: #ece7f2;
+  --alchemmist-shadow: 0 1rem 2.5rem rgb(51 39 69 / 12%);
   --alchemmist-footer-height: 0px;
   --alchemmist-padding-inline: 4.5rem;
   --alchemmist-padding-block: 2.75rem;
@@ -55,6 +56,15 @@ html.dark {
   font-family: "CMU-Roman", serif;
 }
 
+.slidev-page {
+  overflow: hidden;
+}
+
+.alchemmist-frame__content,
+.alchemmist-panel-content {
+  font-size: 1.28rem;
+}
+
 .slidev-layout a {
   color: var(--alchemmist-accent);
   text-decoration-thickness: 0.08em;
@@ -67,24 +77,32 @@ html.dark {
   outline-offset: 0.2rem;
 }
 
-.slidev-layout h1 {
-  font-size: 3rem;
+.alchemmist-frame .alchemmist-frame__content h1,
+.alchemmist-frame .alchemmist-panel-content h1 {
+  font-size: 4.25rem;
+  font-weight: 500;
+  letter-spacing: -0.035em;
   line-height: 1.05;
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.4rem;
+  max-width: 15ch;
 }
 
-.slidev-layout h2 {
-  font-size: 2.2rem;
+.alchemmist-frame .alchemmist-frame__content h2,
+.alchemmist-frame .alchemmist-panel-content h2 {
+  font-size: 2.55rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
   line-height: 1.12;
 }
 
-.slidev-layout h3 {
-  font-size: 1.65rem;
+.alchemmist-frame .alchemmist-frame__content h3,
+.alchemmist-frame .alchemmist-panel-content h3 {
+  font-size: 1.8rem;
 }
 
-.slidev-layout p,
-.slidev-layout li {
-  line-height: 1.35;
+.alchemmist-frame p,
+.alchemmist-frame li {
+  line-height: 1.42;
 }
 
 .slidev-layout ul,
@@ -126,7 +144,7 @@ html.dark {
   bottom: 0;
   box-sizing: border-box;
   left: var(--alchemmist-padding-inline);
-  padding: 0.9rem 0;
+  padding: 0.8rem 0 1.15rem;
   position: absolute;
   right: var(--alchemmist-padding-inline);
 }
@@ -137,6 +155,7 @@ html.dark {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
+  letter-spacing: 0.03em;
 }
 
 .slidev-footer-left {
@@ -152,8 +171,9 @@ html.dark {
   align-items: baseline;
   color: var(--alchemmist-muted);
   display: flex;
-  gap: 0.45em;
-  padding: 1.4rem;
+  gap: 0.42em;
+  letter-spacing: 0.05em;
+  padding: 1.4rem 1.8rem;
   position: absolute;
   z-index: 20;
 }
@@ -175,7 +195,9 @@ html.dark {
   right: 0;
 }
 .alchemmist-pagination__current {
-  font-size: 1.35em;
+  color: var(--alchemmist-accent);
+  font-size: 1.55em;
+  font-weight: 700;
 }
 
 .alchemmist-section-marker {
@@ -186,11 +208,13 @@ html.dark {
   color: var(--marker-color);
   display: inline-block;
   font-family: var(--slidev-code-font-family);
-  font-size: 0.34em;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   line-height: 1;
-  margin-left: 0.45em;
-  padding: 0.35em 0.6em;
-  transform: translateY(-1.3em);
+  margin-left: 0.65em;
+  padding: 0.45em 0.75em;
+  text-transform: uppercase;
+  transform: translateY(-1.5em);
 }
 
 .alchemmist-section-marker.is-amber {
@@ -209,13 +233,15 @@ html.dark {
   --marker-color: #bc3553;
 }
 .alchemmist-section-marker.is-violet {
-  --marker-color: #7651dc;
+  --marker-color: #4724a8;
 }
 
 .alchemmist-card {
   --card-accent: var(--alchemmist-accent);
   background: var(--alchemmist-surface-elevated);
-  border: 1px solid var(--alchemmist-border);
+  border: 1px solid
+    color-mix(in srgb, var(--card-accent) 22%, var(--alchemmist-border));
+  border-radius: 0.35rem;
   box-shadow: var(--alchemmist-shadow);
   color: var(--alchemmist-text);
   min-width: 0;
@@ -229,20 +255,39 @@ html.dark {
   );
   border-bottom: 1px solid
     color-mix(in srgb, var(--card-accent) 30%, transparent);
+  font-family: var(--slidev-code-font-family);
+  font-size: 0.82em;
   font-weight: 600;
-  padding: 0.65rem 1rem;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.2rem;
+  text-transform: uppercase;
 }
 
 .alchemmist-card__body {
-  padding: 1rem;
+  padding: 1.25rem 1.35rem;
 }
 
 .alchemmist-quote {
-  align-items: flex-start;
-  display: flex;
-  gap: 1.25rem;
+  align-items: end;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) auto;
   margin: 0;
-  max-width: 58rem;
+  max-width: 72rem;
+  min-height: 14rem;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+.alchemmist-quote::before {
+  color: color-mix(in srgb, var(--alchemmist-accent) 22%, transparent);
+  content: "“";
+  font-size: 15rem;
+  left: -1rem;
+  line-height: 0.7;
+  position: absolute;
+  top: -4rem;
 }
 
 .alchemmist-quote__avatar {
@@ -253,20 +298,29 @@ html.dark {
 }
 
 .alchemmist-quote__body {
-  background: var(--alchemmist-surface);
-  border-left: 0.3rem solid var(--alchemmist-accent);
+  background: transparent;
+  border-left: 0;
   margin: 0;
-  padding: 1.2rem 1.4rem;
+  padding: 2.7rem 1rem 2rem 3.6rem;
 }
 
 .alchemmist-quote__text {
+  font-family: "CMU-Roman", serif !important;
+  font-size: 2.6rem;
   font-style: italic;
+  line-height: 1.18;
 }
 .alchemmist-quote__source {
   color: var(--alchemmist-muted);
   display: block;
-  font-size: 0.86em;
-  margin-top: 0.4rem;
+  font-size: 0.78em;
+  margin-top: 0.55rem;
+}
+
+.alchemmist-quote figcaption {
+  border-left: 1px solid var(--alchemmist-border);
+  min-width: 14rem;
+  padding: 0.7rem 0 0.7rem 1.5rem;
 }
 
 .alchemmist-image {
@@ -284,8 +338,10 @@ html.dark {
     var(--callout-color) 9%,
     var(--alchemmist-surface)
   );
-  border-left: 0.3rem solid var(--callout-color);
-  padding: 0.9rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--callout-color) 20%, transparent);
+  border-left: 0.35rem solid var(--callout-color);
+  border-radius: 0.3rem;
+  padding: 1.1rem 1.3rem;
 }
 
 .alchemmist-callout.is-tip {
@@ -302,7 +358,10 @@ html.dark {
 }
 .alchemmist-callout__title {
   display: block;
-  margin-bottom: 0.35rem;
+  font-family: var(--slidev-code-font-family);
+  font-size: 0.8em;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
   text-transform: capitalize;
 }
 
