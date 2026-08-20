@@ -42,6 +42,8 @@ describe("sticker placement", () => {
 
     expect(first).toEqual(second);
     expect(new Set(first.map(({ colorIndex }) => colorIndex))).toHaveLength(5);
+    expect(first.some(({ rotation }) => rotation < 0)).toBe(true);
+    expect(first.some(({ rotation }) => rotation > 0)).toBe(true);
   });
 
   it("keeps stickers inside the board without intersections", () => {

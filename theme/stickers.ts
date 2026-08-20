@@ -11,6 +11,13 @@ export interface StickerPlacement {
   y: number;
 }
 
+interface StickerRect {
+  bottom: number;
+  left: number;
+  right: number;
+  top: number;
+}
+
 const hashSeed = (value: string) => {
   let hash = 2166136261;
 
@@ -59,6 +66,12 @@ const shuffledColorIndexes = (
   return result.slice(0, count);
 };
 
+const intersects = (left: StickerRect, right: StickerRect, gap: number) =>
+  left.left < right.right + gap &&
+  left.right + gap > right.left &&
+  left.top < right.bottom + gap &&
+  left.bottom + gap > right.top;
+
 export const placeStickers = (
   container: StickerSize,
   stickers: StickerSize[],
@@ -77,8 +90,12 @@ export const placeStickers = (
     options.colorCount,
     options.seed,
   );
+  const rotationDirections = shuffledIndexes(stickers.length, random);
   const rotations = stickers.map(
-    () => (random() * 2 - 1) * options.maxRotation,
+    (_, index) =>
+      (rotationDirections[index] % 2 === 0 ? -1 : 1) *
+      (0.35 + random() * 0.65) *
+      options.maxRotation,
   );
   const rotatedSizes = stickers.map((sticker, index) => {
     const angle = (Math.abs(rotations[index]) * Math.PI) / 180;
@@ -88,6 +105,60 @@ export const placeStickers = (
       width: sticker.width * Math.cos(angle) + sticker.height * Math.sin(angle),
     };
   });
+
+  for (let scale = 1; scale >= 0.4; scale -= 0.04) {
+    const rects: StickerRect[] = [];
+    const placements: StickerPlacement[] = [];
+    let complete = true;
+
+    for (const [index, sticker] of stickers.entries()) {
+      const width = rotatedSizes[index].width * scale;
+      const height = rotatedSizes[index].height * scale;
+      const availableWidth = container.width - options.gap * 2 - width;
+      const availableHeight = container.height - options.gap * 2 - height;
+      let rect: StickerRect | undefined;
+
+      if (availableWidth < 0 || availableHeight < 0) {
+        complete = false;
+        break;
+      }
+
+      for (let attempt = 0; attempt < 240; attempt += 1) {
+        const left = options.gap + random() * availableWidth;
+        const top = options.gap + random() * availableHeight;
+        const candidate = {
+          bottom: top + height,
+          left,
+          right: left + width,
+          top,
+        };
+
+        if (
+          !rects.some((placed) => intersects(candidate, placed, options.gap))
+        ) {
+          rect = candidate;
+          break;
+        }
+      }
+
+      if (!rect) {
+        complete = false;
+        break;
+      }
+
+      rects.push(rect);
+      placements.push({
+        colorIndex: colors[index],
+        rotation: rotations[index],
+        scale,
+        x: rect.left + (rect.right - rect.left - sticker.width * scale) / 2,
+        y: rect.top + (rect.bottom - rect.top - sticker.height * scale) / 2,
+      });
+    }
+
+    if (complete) return placements;
+  }
+
   const largest = rotatedSizes.reduce(
     (result, size) => ({
       height: Math.max(result.height, size.height),
