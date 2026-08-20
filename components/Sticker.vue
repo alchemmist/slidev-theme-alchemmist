@@ -16,6 +16,7 @@
     opacity 180ms ease,
     transform 260ms ease;
   width: var(--sticker-width, 12rem);
+  z-index: 1;
 }
 
 .alchemmist-sticker__surface {

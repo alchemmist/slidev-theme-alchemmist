@@ -98,7 +98,7 @@ onBeforeUnmount(() => {
 .alchemmist-sticker-board {
   height: 100%;
   min-height: 16rem;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   width: 100%;
 }

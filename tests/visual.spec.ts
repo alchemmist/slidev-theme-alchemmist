@@ -79,3 +79,20 @@ test("drops the current sticker from above", async ({ page }) => {
     )
     .toMatch(/^alchemmist-sticker-drop/);
 });
+
+test("allows sticker shadows to extend beyond the board", async ({ page }) => {
+  await page.goto("/8");
+  await expect(page.locator(".alchemmist-sticker")).toHaveCount(4);
+
+  const board = page.locator(".alchemmist-sticker-board");
+  const sticker = page.locator(".alchemmist-sticker").first();
+
+  await expect
+    .poll(() => board.evaluate((element) => getComputedStyle(element).overflow))
+    .toBe("visible");
+  await expect
+    .poll(() =>
+      sticker.evaluate((element) => Number(getComputedStyle(element).zIndex)),
+    )
+    .toBeGreaterThan(0);
+});
