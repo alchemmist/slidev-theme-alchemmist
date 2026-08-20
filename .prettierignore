@@ -1,6 +1,7 @@
 dist
 example/slides.md
 global-bottom.vue
+README.md
 node_modules
 test-results
 playwright-report
