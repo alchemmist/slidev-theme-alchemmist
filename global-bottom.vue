@@ -170,5 +170,23 @@ onBeforeUnmount(() => {
   right: var(--slide-padding-inline, 2rem);
   padding: 1rem;
   box-sizing: border-box;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.alchemmist-footer-host :deep(a),
+.alchemmist-footer-host :deep(button) {
+  pointer-events: auto;
+}
+
+:global(.slidev-slide-container > .absolute.bottom-0.left-0) {
+  overflow: hidden;
+  width: 2rem;
+}
+
+:global(.slidev-slide-container > .absolute.bottom-0.left-0:hover),
+:global(.slidev-slide-container > .absolute.bottom-0.left-0:focus-within) {
+  overflow: visible;
+  width: auto;
 }
 </style>
