@@ -31,6 +31,33 @@
   transform: rotate(var(--sticker-rotation, 0deg));
 }
 
+.alchemmist-sticker.slidev-vclick-current .alchemmist-sticker__surface {
+  animation: alchemmist-sticker-drop 520ms cubic-bezier(0.22, 0.78, 0.3, 1.12)
+    both;
+}
+
+@keyframes alchemmist-sticker-drop {
+  0% {
+    transform: translateY(-9rem) rotate(var(--sticker-rotation, 0deg))
+      scale(0.92);
+  }
+
+  72% {
+    transform: translateY(0.45rem) rotate(var(--sticker-rotation, 0deg))
+      scale(1.02);
+  }
+
+  100% {
+    transform: translateY(0) rotate(var(--sticker-rotation, 0deg)) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alchemmist-sticker.slidev-vclick-current .alchemmist-sticker__surface {
+    animation: none;
+  }
+}
+
 .alchemmist-sticker__surface :deep(> b),
 .alchemmist-sticker__surface :deep(> strong) {
   font-size: 1.15rem;

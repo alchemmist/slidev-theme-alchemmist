@@ -62,3 +62,20 @@ test("lays out sticker cards inside the context board", async ({ page }) => {
     )
     .toBe(false);
 });
+
+test("drops the current sticker from above", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/8");
+  await expect(page.locator(".alchemmist-sticker")).toHaveCount(4);
+  await page.keyboard.press("ArrowRight");
+
+  const surface = page.locator(
+    ".alchemmist-sticker.slidev-vclick-current .alchemmist-sticker__surface",
+  );
+  await expect(surface).toBeVisible();
+  await expect
+    .poll(() =>
+      surface.evaluate((element) => getComputedStyle(element).animationName),
+    )
+    .toMatch(/^alchemmist-sticker-drop/);
+});
