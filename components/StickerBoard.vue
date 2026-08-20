@@ -11,7 +11,7 @@ const props = withDefaults(
   }>(),
   {
     gap: 12,
-    maxRotation: 3,
+    maxRotation: 5,
     seed: "alchemmist",
     width: "12rem",
   },
