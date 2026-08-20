@@ -57,7 +57,8 @@
 
 .mono-text {
   font-family: var(--slidev-code-font-family);
-  font-size: 0.9em;
+  font-size: 1.2em;
+  line-height: inherit;
 }
 
 .slidev-layout.cover h1,
