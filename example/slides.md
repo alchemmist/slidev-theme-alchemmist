@@ -69,8 +69,6 @@ $9.7 billion by 2024."
 
 ---
 layout: center
-pagination: false
-footer: false
 ---
 
 <style scoped>

@@ -17,3 +17,11 @@ test("preserves the original intro and chrome", async ({ page }) => {
       animations: "disabled",
     });
 });
+
+test("shows footer and pagination on the fourth demo slide", async ({
+  page,
+}) => {
+  await page.goto("/4");
+  await expect(page.getByLabel("Slide number")).toContainText("4");
+  await expect(page.locator(".slidev-footer")).toBeVisible();
+});
