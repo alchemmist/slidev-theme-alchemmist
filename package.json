@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint .",
     "format:check": "prettier --check .",
-    "test:unit": "vitest run tests/config.test.ts",
+    "test:unit": "vitest run tests/*.test.ts",
     "test:visual": "playwright test",
     "test:a11y": "playwright test tests/a11y.spec.ts",
     "pack:check": "node scripts/check-package.mjs",
