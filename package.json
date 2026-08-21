@@ -40,7 +40,7 @@
   "homepage": "https://sli.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alchemmist/slidev-theme-alchemmist"
+    "url": "git+https://github.com/alchemmist/slidev-theme-alchemmist.git"
   },
   "bugs": "https://github.com/alchemmist/slidev-theme-alchemmist/issues",
   "keywords": [
