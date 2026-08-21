@@ -56,6 +56,7 @@ const altText = computed(() => props.alt || `QR code for ${props.label}`);
   background: transparent;
   color: #666;
   display: block;
+  font-family: var(--slidev-code-font-family);
   font-size: var(--qr-link-address-size, 0.72rem);
   overflow-wrap: anywhere;
   padding: 0;
