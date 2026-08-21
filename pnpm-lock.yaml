@@ -91,8 +91,8 @@ importers:
         specifier: latest
         version: 0.25.0
       slidev-addon-fancy-arrow:
-        specifier: ^0.16.0
-        version: 0.16.1(typescript@5.9.3)
+        specifier: ^0.18.0
+        version: 0.18.0(typescript@5.9.3)
       slidev-theme-alchemmist:
         specifier: workspace:*
         version: link:..
@@ -3524,8 +3524,8 @@ packages:
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
-  slidev-addon-fancy-arrow@0.16.1:
-    resolution: {integrity: sha512-CNSTHmr3StvV6gGECoNW4wQ0hQVI/rLJqgfaMBGlNRFTN6n9+e9+U9nLkDwkRaAirHSIGrsy6g9dbHBky3N8EQ==}
+  slidev-addon-fancy-arrow@0.18.0:
+    resolution: {integrity: sha512-EMCg+wf5E7j7I3JgHeW2vocjZm7fkht8AZgxIrn+tvO9uR2nt54zDTnrrcFXoz4Om7jtg3KVVxHiLkI6RH5fsA==}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -8634,7 +8634,7 @@ snapshots:
 
   sisteransi@1.0.5: {}
 
-  slidev-addon-fancy-arrow@0.16.1(typescript@5.9.3):
+  slidev-addon-fancy-arrow@0.18.0(typescript@5.9.3):
     dependencies:
       roughjs: 4.6.6
       vue: 3.5.41(typescript@5.9.3)
