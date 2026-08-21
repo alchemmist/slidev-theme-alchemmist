@@ -56,6 +56,10 @@ function waitForTransition(element: Element): Promise<void> {
   });
 
   transitionPromises.set(element, promise);
+  void promise.finally(() => {
+    if (transitionPromises.get(element) === promise)
+      transitionPromises.delete(element);
+  });
   return promise;
 }
 

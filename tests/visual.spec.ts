@@ -62,6 +62,24 @@ test("reveals chrome after a split image slide finishes transitioning", async ({
   await expect(
     page.locator(".slidev-page-2 .alchemmist-layout-frame"),
   ).toHaveCSS("transition-duration", "0.24s");
+
+  await page.keyboard.press("ArrowLeft");
+  await expect(page.locator(".slidev-layout.image-right")).toBeVisible();
+  await expect(page.locator(".slidev-footer")).toHaveCount(0);
+  await expect(
+    page.locator('.slidev-page-1[class*="-enter-active"]'),
+  ).toHaveCount(0);
+
+  await page.keyboard.press("ArrowRight");
+  const repeatedEnteringSlide = page.locator(
+    '.slidev-page-2[class*="-enter-active"]',
+  );
+  await expect(repeatedEnteringSlide).toBeVisible();
+  await expect(page.locator(".slidev-footer")).toHaveCount(0);
+  await expect(pagination).toHaveCSS("opacity", "0");
+  await expect(repeatedEnteringSlide).toHaveCount(0);
+  await expect(page.locator(".alchemmist-footer-host")).toBeVisible();
+  await expect(pagination).toHaveCSS("opacity", "1");
 });
 
 test("centers oversized images in the center layout", async ({ page }) => {
