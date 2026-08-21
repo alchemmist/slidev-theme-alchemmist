@@ -3,6 +3,7 @@ import { computed } from "vue";
 import { useNav, useSlideContext } from "@slidev/client";
 import Pagination from "./components/Pagination.vue";
 import { isChromeVisible, resolveCorner } from "./theme/config";
+import { useDeferredChromeVisibility } from "./theme/chromeTransition";
 import type { SlideChromeFrontmatter, ThemeConfig } from "./theme/config";
 
 const { $slidev } = useSlideContext();
@@ -16,7 +17,7 @@ const frontmatter = computed<SlideChromeFrontmatter>(
     )?.frontmatter ?? {},
 );
 const config = computed<ThemeConfig>(() => $slidev.themeConfigs ?? {});
-const visible = computed(() =>
+const desiredVisibility = computed(() =>
   isChromeVisible(
     "pagination",
     $slidev.nav.currentPage,
@@ -25,8 +26,11 @@ const visible = computed(() =>
     config.value,
   ),
 );
+const visible = useDeferredChromeVisibility(desiredVisibility);
 </script>
 
 <template>
-  <Pagination v-if="visible" :position="resolveCorner(config)" />
+  <Transition name="alchemmist-chrome">
+    <Pagination v-if="visible" :position="resolveCorner(config)" />
+  </Transition>
 </template>

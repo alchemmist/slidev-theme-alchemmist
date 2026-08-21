@@ -32,7 +32,7 @@ const total = computed(() => $slidev.nav.total);
 
 <template>
   <div
-    class="absolute p-2 text-xs mono-text"
+    class="alchemmist-pagination absolute p-2 text-xs mono-text"
     :class="classes"
     style="color: rgba(0, 0, 0, 0.5); display: flex; gap: 0.5em; padding: 1.5em"
     aria-label="Slide number"

@@ -26,6 +26,44 @@ test("shows footer and pagination on the fourth demo slide", async ({
   await expect(page.locator(".slidev-footer")).toBeVisible();
 });
 
+test("reveals chrome after a split image slide finishes transitioning", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("http://127.0.0.1:4174/");
+  await expect(page.locator(".slidev-layout.image-right")).toBeVisible();
+  await expect(page.locator(".slidev-footer")).toHaveCount(0);
+
+  await page.keyboard.press("ArrowRight");
+  const enteringSlide = page.locator('.slidev-page-2[class*="-enter-active"]');
+  const pagination = page.locator('.slidev-page-2 [aria-label="Slide number"]');
+  await expect(enteringSlide).toBeVisible();
+  await expect(page.locator(".slidev-footer")).toHaveCount(0);
+  await expect(pagination).toHaveCSS("opacity", "0");
+  await expect
+    .poll(() =>
+      page
+        .getByLabel("Slide number")
+        .evaluateAll(
+          (elements) =>
+            elements.filter((element) => !element.closest(".slidev-page"))
+              .length,
+        ),
+    )
+    .toBe(0);
+
+  await expect(enteringSlide).toHaveCount(0);
+  const footerHost = page.locator(".alchemmist-footer-host");
+  await expect(footerHost).toHaveCount(1);
+  await expect(footerHost).toHaveCSS("transition-duration", "0.24s");
+  await expect(footerHost).toBeVisible();
+  await expect(footerHost).toHaveCSS("opacity", "1");
+  await expect(pagination).toHaveCSS("opacity", "1");
+  await expect(
+    page.locator(".slidev-page-2 .alchemmist-layout-frame"),
+  ).toHaveCSS("transition-duration", "0.24s");
+});
+
 test("centers oversized images in the center layout", async ({ page }) => {
   await page.goto("/2");
   const layout = page.locator(".slidev-page-2 .slidev-layout.center");

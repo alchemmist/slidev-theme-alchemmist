@@ -92,6 +92,20 @@
   color: var(--slidev-footer-color, #555);
 }
 
+.alchemmist-pagination {
+  opacity: 1;
+  transition: opacity 240ms ease;
+}
+
+.slidev-page[class*="-enter-active"] .alchemmist-pagination {
+  opacity: 0;
+}
+
+.alchemmist-chrome-enter-from,
+.alchemmist-chrome-leave-to {
+  opacity: 0;
+}
+
 .left-image img {
   object-fit: cover;
   object-position: left;

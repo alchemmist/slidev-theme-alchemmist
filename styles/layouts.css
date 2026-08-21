@@ -108,6 +108,7 @@
   justify-content: center;
   align-items: center;
   height: calc(100% - var(--alchemmist-footer-height, 0px));
+  transition: height 240ms ease;
 }
 
 .alchemmist-frame {
@@ -116,6 +117,7 @@
   height: calc(100% - var(--alchemmist-footer-height, 0px));
   justify-content: center;
   width: 100%;
+  transition: height 240ms ease;
 }
 
 .alchemmist-frame__content {

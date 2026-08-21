@@ -1,11 +1,13 @@
 <template>
-  <div
-    v-if="showFooter"
-    ref="footerHost"
-    class="alchemmist-footer-host"
-  >
-    <component :is="resolvedFooterComponent" />
-  </div>
+  <Transition name="alchemmist-chrome">
+    <div
+      v-if="showFooter"
+      ref="footerHost"
+      class="alchemmist-footer-host"
+    >
+      <component :is="resolvedFooterComponent" />
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
@@ -13,6 +15,7 @@ import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, r
 import { useNav, useSlideContext } from '@slidev/client'
 import AlchemmistFooter from './components/AlchemmistFooter.vue'
 import { isChromeVisible } from './theme/config'
+import { useDeferredChromeVisibility } from './theme/chromeTransition'
 import type { SlideChromeFrontmatter, ThemeConfig } from './theme/config'
 
 const FOOTER_HEIGHT_VAR = '--alchemmist-footer-height'
@@ -41,7 +44,7 @@ for (const [path, loadComponent] of Object.entries(footerComponentModules)) {
 let resizeObserver: ResizeObserver | null = null
 let mutationObserver: MutationObserver | null = null
 
-const showFooter = computed(() =>
+const footerDesired = computed(() =>
   isChromeVisible(
     'footer',
     $slidev.nav.currentPage,
@@ -50,6 +53,7 @@ const showFooter = computed(() =>
     config.value,
   ),
 )
+const showFooter = useDeferredChromeVisibility(footerDesired)
 
 const resolvedFooterComponent = computed(() => {
   const customFooterName = $slidev.themeConfigs.footerComponent
@@ -165,7 +169,13 @@ onBeforeUnmount(() => {
   padding: 1rem;
   box-sizing: border-box;
   pointer-events: none;
+  transition: opacity 240ms ease;
   z-index: 1;
+}
+
+.alchemmist-chrome-enter-from,
+.alchemmist-chrome-leave-to {
+  opacity: 0;
 }
 
 .alchemmist-footer-host :deep(a),
