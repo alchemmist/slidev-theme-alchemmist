@@ -1,13 +1,13 @@
 <template>
-  <Transition name="alchemmist-chrome">
-    <div
-      v-if="showFooter"
-      ref="footerHost"
-      class="alchemmist-footer-host"
-    >
-      <component :is="resolvedFooterComponent" />
-    </div>
-  </Transition>
+  <div
+    v-if="footerEnabled"
+    ref="footerHost"
+    class="alchemmist-footer-host"
+    :class="{ 'is-visible': showFooter }"
+    :aria-hidden="!showFooter"
+  >
+    <component :is="resolvedFooterComponent" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -54,6 +54,7 @@ const footerDesired = computed(() =>
   ),
 )
 const showFooter = useDeferredChromeVisibility(footerDesired)
+const footerEnabled = computed(() => config.value.footer !== false)
 
 const resolvedFooterComponent = computed(() => {
   const customFooterName = $slidev.themeConfigs.footerComponent
@@ -138,19 +139,20 @@ const reconnectObservers = () => {
   }
 }
 
-watch(showFooter, async (isVisible) => {
-  if (!isVisible) {
+watch(footerEnabled, async (isEnabled) => {
+  if (!isEnabled) {
     disconnectObservers()
     setFooterHeightVar(0)
     return
   }
-
   await nextTick()
   reconnectObservers()
   updateFooterHeight()
 }, { immediate: true })
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick()
+  reconnectObservers()
   updateFooterHeight()
 })
 
@@ -168,14 +170,14 @@ onBeforeUnmount(() => {
   right: var(--slide-padding-inline, 2rem);
   padding: 1rem;
   box-sizing: border-box;
+  opacity: 0;
   pointer-events: none;
   transition: opacity 240ms ease;
   z-index: 1;
 }
 
-.alchemmist-chrome-enter-from,
-.alchemmist-chrome-leave-to {
-  opacity: 0;
+.alchemmist-footer-host.is-visible {
+  opacity: 1;
 }
 
 .alchemmist-footer-host :deep(a),

@@ -32,13 +32,25 @@ test("reveals chrome after a split image slide finishes transitioning", async ({
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("http://127.0.0.1:4174/");
   await expect(page.locator(".slidev-layout.image-right")).toBeVisible();
-  await expect(page.locator(".slidev-footer")).toHaveCount(0);
+  await expect(page.locator(".alchemmist-footer-host")).toHaveCSS(
+    "opacity",
+    "0",
+  );
 
   await page.keyboard.press("ArrowRight");
   const enteringSlide = page.locator('.slidev-page-2[class*="-enter-active"]');
   const pagination = page.locator('.slidev-page-2 [aria-label="Slide number"]');
   await expect(enteringSlide).toBeVisible();
-  await expect(page.locator(".slidev-footer")).toHaveCount(0);
+  const layoutFrame = page
+    .locator(".alchemmist-layout-frame")
+    .filter({ hasText: "Slide with chrome" });
+  const frameHeightDuringTransition = await layoutFrame.evaluate(
+    (element) => element.getBoundingClientRect().height,
+  );
+  await expect(page.locator(".alchemmist-footer-host")).toHaveCSS(
+    "opacity",
+    "0",
+  );
   await expect(pagination).toHaveCSS("opacity", "0");
   await expect
     .poll(() =>
@@ -59,13 +71,22 @@ test("reveals chrome after a split image slide finishes transitioning", async ({
   await expect(footerHost).toBeVisible();
   await expect(footerHost).toHaveCSS("opacity", "1");
   await expect(pagination).toHaveCSS("opacity", "1");
+  const frameHeightAfterTransition = await layoutFrame.evaluate(
+    (element) => element.getBoundingClientRect().height,
+  );
+  expect(
+    Math.abs(frameHeightDuringTransition - frameHeightAfterTransition),
+  ).toBeLessThan(1);
   await expect(
     page.locator(".slidev-page-2 .alchemmist-layout-frame"),
   ).toHaveCSS("transition-duration", "0.24s");
 
   await page.keyboard.press("ArrowLeft");
   await expect(page.locator(".slidev-layout.image-right")).toBeVisible();
-  await expect(page.locator(".slidev-footer")).toHaveCount(0);
+  await expect(page.locator(".alchemmist-footer-host")).toHaveCSS(
+    "opacity",
+    "0",
+  );
   await expect(
     page.locator('.slidev-page-1[class*="-enter-active"]'),
   ).toHaveCount(0);
@@ -75,7 +96,10 @@ test("reveals chrome after a split image slide finishes transitioning", async ({
     '.slidev-page-2[class*="-enter-active"]',
   );
   await expect(repeatedEnteringSlide).toBeVisible();
-  await expect(page.locator(".slidev-footer")).toHaveCount(0);
+  await expect(page.locator(".alchemmist-footer-host")).toHaveCSS(
+    "opacity",
+    "0",
+  );
   await expect(pagination).toHaveCSS("opacity", "0");
   await expect(repeatedEnteringSlide).toHaveCount(0);
   await expect(page.locator(".alchemmist-footer-host")).toBeVisible();

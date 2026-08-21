@@ -111,6 +111,13 @@
   transition: height 240ms ease;
 }
 
+.alchemmist-layout-frame--full,
+.alchemmist-layout-frame[footer="false"],
+.alchemmist-layout-frame[hidefooter="true"] {
+  height: 100%;
+  transition: none;
+}
+
 .alchemmist-frame {
   align-items: center;
   display: flex;

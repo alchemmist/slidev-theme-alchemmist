@@ -40,7 +40,7 @@ const style = computed(() => {
 </script>
 
 <template>
-  <div class="alchemmist-layout-frame">
+  <div class="alchemmist-layout-frame alchemmist-layout-frame--full">
     <div class="grid w-full h-full auto-rows-fr" :style="gridStyle">
       <div
         class="alchemmist-split-image alchemmist-split-image--left w-full h-full"
