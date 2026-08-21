@@ -76,6 +76,11 @@
   z-index: 1;
 }
 
+.alchemmist-split-image-content {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
 .alchemmist-split-image--left {
   border-bottom-right-radius: 1.5rem;
   border-top-right-radius: 1.5rem;

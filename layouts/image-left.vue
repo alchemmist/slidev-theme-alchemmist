@@ -47,7 +47,10 @@ const style = computed(() => {
         class="alchemmist-split-image alchemmist-split-image--left w-full h-full"
         :style="style"
       />
-      <div class="slidev-layout default" :class="props.class">
+      <div
+        class="slidev-layout default alchemmist-split-image-content"
+        :class="props.class"
+      >
         <slot />
       </div>
     </div>

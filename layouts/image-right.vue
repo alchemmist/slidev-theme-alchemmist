@@ -41,7 +41,10 @@ const style = computed(() => {
 <template>
   <div class="alchemmist-layout-frame">
     <div class="grid w-full h-full auto-rows-fr" :style="gridStyle">
-      <div class="slidev-layout image-right" :class="props.class">
+      <div
+        class="slidev-layout image-right alchemmist-split-image-content"
+        :class="props.class"
+      >
         <slot />
       </div>
       <div
