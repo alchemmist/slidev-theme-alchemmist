@@ -129,6 +129,23 @@ image-width: 60%
 
 New slides can use `Callout` and `SectionMarker`. Existing `GitHubAlert`, `MarkerX`, `Card`, `Quote`, `Image`, and `AlchemmistFooter` usages remain supported.
 
+## QR links
+
+Use `qr-links` for a large primary QR code and secondary links grouped two per row. `QrLink` keeps only the address clickable and overlays an icon in the center of the QR code:
+
+```md
+---
+layout: qr-links
+---
+
+<QrLink src="/qr-demo.svg" icon-src="/favicon.svg" href="https://example.com" label="Live demo" />
+
+::right::
+
+<QrLink src="/qr-source.svg" icon-src="/github.svg" href="https://github.com/example/repo" label="GitHub" />
+<QrLink src="/qr-blog.svg" icon-src="/logo.svg" href="https://example.com/blog" label="Blog" />
+```
+
 Asset paths beginning with `/` now honor the configured Vite base path, so the same deck works locally and when deployed below a subpath.
 
 See [MIGRATION.md](./MIGRATION.md) for the compatibility-focused upgrade notes.

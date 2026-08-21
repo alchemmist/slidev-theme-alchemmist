@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added the `qr-links` layout and `QrLink` component for icon-backed QR link collections.
 - Hid footer and pagination automatically on `image-left` and `image-right` layouts.
 - Added default rounded inner corners and inward-facing shadows to split-image layouts.
 - Added configurable `image-width` to split-image layouts with a `50%` default.
