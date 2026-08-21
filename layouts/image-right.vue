@@ -17,8 +17,6 @@ const backgroundPosition = computed(
   () => attrs["background-position"] ?? "left",
 );
 
-const hasShadow = computed(() => !!attrs["shadow"]);
-
 const style = computed(() => {
   if (!props.image) return {};
 
@@ -31,7 +29,6 @@ const style = computed(() => {
   return {
     ...baseStyle,
     backgroundPosition: `${backgroundPosition.value} center`,
-    ...(hasShadow.value ? { boxShadow: "10px 0 20px rgba(0,0,0,0.3)" } : {}),
   };
 });
 </script>
@@ -42,7 +39,10 @@ const style = computed(() => {
       <div class="slidev-layout image-right" :class="props.class">
         <slot />
       </div>
-      <div class="w-full h-full" :style="style" />
+      <div
+        class="alchemmist-split-image alchemmist-split-image--right w-full h-full"
+        :style="style"
+      />
     </div>
   </div>
 </template>

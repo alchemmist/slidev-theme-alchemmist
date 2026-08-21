@@ -70,6 +70,21 @@
   justify-content: center;
 }
 
+.alchemmist-split-image {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.alchemmist-split-image--left {
+  box-shadow: 0.75rem 0 1.5rem rgb(0 0 0 / 22%);
+}
+
+.alchemmist-split-image--right {
+  box-shadow: -0.75rem 0 1.5rem rgb(0 0 0 / 22%);
+}
+
 .slidev-layout.section {
   h1 {
     @apply text-6xl font-500 leading-20;
