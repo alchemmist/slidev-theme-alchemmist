@@ -21,9 +21,12 @@ export interface SlideChromeFrontmatter {
   hideFooter?: boolean;
   hideDate?: boolean;
   hideLogos?: boolean;
+  layout?: string;
   pagination?: boolean;
   hidePagination?: boolean;
 }
+
+const CHROMELESS_LAYOUTS = new Set(["image-left", "image-right"]);
 
 export function resolveCorner(config: ThemeConfig): Corner {
   if (config.paginationPosition) return config.paginationPosition;
@@ -41,6 +44,8 @@ export function isChromeVisible(
   config: ThemeConfig,
 ): boolean {
   if (page === total + 1) return false;
+  if (frontmatter.layout && CHROMELESS_LAYOUTS.has(frontmatter.layout))
+    return false;
 
   const hiddenAlias =
     kind === "footer" ? frontmatter.hideFooter : frontmatter.hidePagination;

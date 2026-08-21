@@ -12,6 +12,8 @@
 import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useNav, useSlideContext } from '@slidev/client'
 import AlchemmistFooter from './components/AlchemmistFooter.vue'
+import { isChromeVisible } from './theme/config'
+import type { SlideChromeFrontmatter, ThemeConfig } from './theme/config'
 
 const FOOTER_HEIGHT_VAR = '--alchemmist-footer-height'
 
@@ -19,7 +21,10 @@ const { $slidev } = useSlideContext()
 const { currentSlideRoute } = useNav()
 const footerHost = ref<HTMLDivElement | null>(null)
 const footerComponentModules = import.meta.glob('/components/**/*.vue')
-const currentFrontmatter = computed(() => currentSlideRoute.value?.meta?.slide?.frontmatter ?? {})
+const currentFrontmatter = computed<SlideChromeFrontmatter>(
+  () => currentSlideRoute.value?.meta?.slide?.frontmatter ?? {},
+)
+const config = computed<ThemeConfig>(() => $slidev.themeConfigs ?? {})
 
 const footerComponentByName = new Map<string, ReturnType<typeof defineAsyncComponent>>()
 
@@ -36,26 +41,15 @@ for (const [path, loadComponent] of Object.entries(footerComponentModules)) {
 let resizeObserver: ResizeObserver | null = null
 let mutationObserver: MutationObserver | null = null
 
-const showFooter = computed(() => {
-  if ($slidev.themeConfigs.footer === false)
-    return false
-
-  const isSlideFooterHidden = currentFrontmatter.value.footer === false
-    || currentFrontmatter.value.hideFooter === true
-
-  if (isSlideFooterHidden)
-    return false
-
-  if ($slidev.nav.currentPage === $slidev.nav.total + 1)
-    return false
-
-  const disabledPages = $slidev.themeConfigs.footerPagesDisabled
-
-  if (Array.isArray(disabledPages) && disabledPages.includes($slidev.nav.currentPage))
-    return false
-
-  return true
-})
+const showFooter = computed(() =>
+  isChromeVisible(
+    'footer',
+    $slidev.nav.currentPage,
+    $slidev.nav.total,
+    currentFrontmatter.value,
+    config.value,
+  ),
+)
 
 const resolvedFooterComponent = computed(() => {
   const customFooterName = $slidev.themeConfigs.footerComponent

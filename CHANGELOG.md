@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Hid footer and pagination automatically on `image-left` and `image-right` layouts.
+
 ## 0.3.2
 
 - Fixed duplicated deployment base paths in `Image` component URLs.

@@ -18,4 +18,12 @@ describe("theme config", () => {
     ).toBe(false);
     expect(isChromeVisible("pagination", 2, 5, {}, {})).toBe(true);
   });
+
+  it.each(["image-left", "image-right"])(
+    "hides footer and pagination for the %s layout",
+    (layout) => {
+      expect(isChromeVisible("footer", 2, 5, { layout }, {})).toBe(false);
+      expect(isChromeVisible("pagination", 2, 5, { layout }, {})).toBe(false);
+    },
+  );
 });

@@ -111,6 +111,8 @@ themeConfig:
 
 Set `pagination: false` or `footer: false` in slide frontmatter to hide either element. `paginationPagesDisabled` and `footerPagesDisabled` still accept page number arrays.
 
+The `image-left` and `image-right` layouts hide pagination and footer automatically so their split image can remain edge-to-edge.
+
 ### Components and assets
 
 New slides can use `Callout` and `SectionMarker`. Existing `GitHubAlert`, `MarkerX`, `Card`, `Quote`, `Image`, and `AlchemmistFooter` usages remain supported.
