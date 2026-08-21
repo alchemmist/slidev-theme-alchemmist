@@ -26,6 +26,31 @@ test("shows footer and pagination on the fourth demo slide", async ({
   await expect(page.locator(".slidev-footer")).toBeVisible();
 });
 
+test("centers oversized images in the center layout", async ({ page }) => {
+  await page.goto("/2");
+  const layout = page.locator(".slidev-page-2 .slidev-layout.center");
+  const image = layout.locator(".slidev-image");
+
+  await layout.locator(".my-auto").evaluate((element) => {
+    const oversizedImage = document.createElement("div");
+    oversizedImage.className = "slidev-image";
+    oversizedImage.style.height = "1rem";
+    oversizedImage.style.width = "500%";
+    element.append(oversizedImage);
+  });
+
+  const centers = await Promise.all(
+    [layout, image].map((locator) =>
+      locator.evaluate((element) => {
+        const rect = element.getBoundingClientRect();
+        return rect.left + rect.width / 2;
+      }),
+    ),
+  );
+
+  expect(Math.abs(centers[0] - centers[1])).toBeLessThan(1);
+});
+
 test("lays out sticker cards inside the context board", async ({ page }) => {
   await page.goto("/8");
   const stickers = page.locator(".alchemmist-sticker");

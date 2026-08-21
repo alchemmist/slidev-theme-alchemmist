@@ -15,4 +15,10 @@
 .quote {
   position: relative;
 }
+
+:deep(.slidev-image) {
+  left: 50%;
+  position: relative;
+  translate: -50% 0;
+}
 </style>
