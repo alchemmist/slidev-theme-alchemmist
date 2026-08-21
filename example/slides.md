@@ -139,3 +139,27 @@ pagination: false
 ---
 
 # Thank you, let's discuss<MarkerX color="#0096FF" title="qa" />
+
+---
+layout: context-board
+gap: 2.5rem
+split: 44%
+---
+
+# Context and discoveries
+
+::left::
+
+- A large shared codebase
+- Dozens of contributors
+- Automated checks in CI
+- One reproducible workflow
+
+::right::
+
+<StickerBoard seed="theme-demo">
+  <Sticker v-click><b>54 days</b><span>from first attempt to rollout</span></Sticker>
+  <Sticker v-click><b>37 cases</b><span>captured as golden tests</span></Sticker>
+  <Sticker v-click><b>10 rounds</b><span>of review and refinement</span></Sticker>
+  <Sticker v-click><b>5 tickets</b><span>resolved with the platform team</span></Sticker>
+</StickerBoard>

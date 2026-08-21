@@ -1,6 +1,6 @@
 {
   "name": "slidev-theme-alchemmist",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "An academic engineering theme for Slidev",
   "type": "module",
   "packageManager": "pnpm@11.22.0",
@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint .",
     "format:check": "prettier --check .",
-    "test:unit": "vitest run tests/config.test.ts",
+    "test:unit": "vitest run tests/*.test.ts",
     "test:visual": "playwright test",
     "test:a11y": "playwright test tests/a11y.spec.ts",
     "pack:check": "node scripts/check-package.mjs",

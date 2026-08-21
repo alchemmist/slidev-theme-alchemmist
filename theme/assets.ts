@@ -1,8 +1,12 @@
 import type { CSSProperties } from "vue";
 
-export function resolveAssetUrl(url = ""): string {
+export function resolveAssetUrl(
+  url = "",
+  base = import.meta.env.BASE_URL,
+): string {
   if (!url.startsWith("/")) return url;
-  return `${import.meta.env.BASE_URL}${url.slice(1)}`;
+  if (url.startsWith(base)) return url;
+  return `${base}${url.slice(1)}`;
 }
 
 export function backgroundStyle(

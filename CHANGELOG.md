@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.2
+
+- Fixed duplicated deployment base paths in `Image` component URLs.
+- Added regression coverage for idempotent asset URL resolution.
+- Verified the fix against EOSP slides deployed below nested base paths.
+
 ## 0.3.1
 
 - Restored the original 0.1 visual design and layout geometry.
