@@ -241,12 +241,14 @@ test("generates icon-backed QR links from URLs", async ({ page }) => {
 
 test("uses one visual language for quote and QR links", async ({ page }) => {
   await page.goto("/3");
+  await page.addStyleTag({ content: "a { transition: none !important; }" });
   const quoteLink = page.locator(".alchemmist-quote a");
   await expect(quoteLink).toHaveCSS("color", "rgb(107, 114, 128)");
   await quoteLink.hover();
   await expect(quoteLink).toHaveCSS("color", "rgb(58, 185, 213)");
 
   await page.goto("http://127.0.0.1:4175/");
+  await page.addStyleTag({ content: "a { transition: none !important; }" });
   const qrLink = page.locator(".alchemmist-qr-link a").first();
   await expect(qrLink).toHaveCSS("color", "rgb(107, 114, 128)");
   await qrLink.hover();

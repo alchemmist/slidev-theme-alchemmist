@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.4.0
 
 - Added the `qr-links` layout plus seamless `QrCode` and `QrLink` generation from URLs with optional centered icons.
 - Made QR icon padding proportional to the backing frame through `--qr-link-icon-fill`.
