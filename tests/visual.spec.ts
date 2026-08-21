@@ -233,6 +233,24 @@ test("generates icon-backed QR links from URLs", async ({ page }) => {
   );
   expect(sizes[0]).toBeGreaterThan(Number(sizes[1]) * 1.5);
   expect(sizes[1]).toBeCloseTo(Number(sizes[2]), 1);
+  const geometry = await links.evaluateAll((elements) =>
+    elements.map((element) => {
+      const label = element.querySelector("a")?.getBoundingClientRect();
+      const qr = element
+        .querySelector(".alchemmist-qr-code")
+        ?.getBoundingClientRect();
+      return {
+        labelBottom: label?.bottom,
+        labelLeft: label?.left,
+        qrLeft: qr?.left,
+        qrTop: qr?.top,
+      };
+    }),
+  );
+  for (const item of geometry) {
+    expect(Number(item.labelBottom)).toBeLessThan(Number(item.qrTop));
+    expect(Number(item.labelLeft)).toBeCloseTo(Number(item.qrLeft), 1);
+  }
   await expect(links.locator("a")).toHaveCount(3);
   await expect(links.locator("a img")).toHaveCount(0);
   await expect(links.locator("code")).toHaveCount(0);
