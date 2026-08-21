@@ -71,17 +71,20 @@
 }
 
 .alchemmist-split-image {
-  border-radius: 1.5rem;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
 
 .alchemmist-split-image--left {
+  border-bottom-right-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
   box-shadow: 0.75rem 0 1.5rem rgb(0 0 0 / 22%);
 }
 
 .alchemmist-split-image--right {
+  border-bottom-left-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
   box-shadow: -0.75rem 0 1.5rem rgb(0 0 0 / 22%);
 }
 

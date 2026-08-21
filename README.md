@@ -111,7 +111,7 @@ themeConfig:
 
 Set `pagination: false` or `footer: false` in slide frontmatter to hide either element. `paginationPagesDisabled` and `footerPagesDisabled` still accept page number arrays.
 
-The `image-left` and `image-right` layouts hide pagination and footer automatically so their split image can remain edge-to-edge. Split images include rounded corners and an inward-facing shadow by default.
+The `image-left` and `image-right` layouts hide pagination and footer automatically so their split image can remain edge-to-edge. Split images include an inward-facing shadow and rounded inner corners by default.
 
 ### Components and assets
 
