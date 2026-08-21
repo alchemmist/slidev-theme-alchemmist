@@ -23,5 +23,12 @@ export default defineConfig({
       reuseExistingServer: false,
       timeout: 120000,
     },
+    {
+      command:
+        "pnpm exec slidev build example/fixtures/qr-links.md --out qr-dist && pnpm exec vite preview example/fixtures --outDir qr-dist --host 127.0.0.1 --port 4175",
+      port: 4175,
+      reuseExistingServer: false,
+      timeout: 120000,
+    },
   ],
 });

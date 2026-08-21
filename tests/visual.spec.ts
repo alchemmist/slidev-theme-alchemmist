@@ -201,3 +201,38 @@ test("allows sticker shadows to extend beyond the board", async ({ page }) => {
     )
     .toBeGreaterThan(0);
 });
+
+test("generates icon-backed QR links from URLs", async ({ page }) => {
+  await page.goto("http://127.0.0.1:4175/");
+
+  const links = page.locator(".alchemmist-qr-link");
+  await expect(links).toHaveCount(3);
+  await expect
+    .poll(() =>
+      links.evaluateAll((elements) =>
+        elements.every((element) => {
+          const image = element.querySelector<HTMLImageElement>(
+            ".alchemmist-qr-code__image",
+          );
+          return Boolean(
+            image?.complete &&
+            image.naturalWidth > 0 &&
+            image.src.startsWith("data:image/svg+xml"),
+          );
+        }),
+      ),
+    )
+    .toBe(true);
+
+  const sizes = await links.evaluateAll((elements) =>
+    elements.map(
+      (element) =>
+        element.querySelector(".alchemmist-qr-code")?.getBoundingClientRect()
+          .width,
+    ),
+  );
+  expect(sizes[0]).toBeGreaterThan(Number(sizes[1]) * 1.5);
+  expect(sizes[1]).toBeCloseTo(Number(sizes[2]), 1);
+  await expect(links.locator("a")).toHaveCount(3);
+  await expect(links.locator("a img")).toHaveCount(0);
+});

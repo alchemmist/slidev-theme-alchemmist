@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from "vue";
-import QRCode from "qrcode";
+import * as QRCode from "qrcode";
 import { resolveAssetUrl } from "../theme/assets";
 
 const props = withDefaults(
