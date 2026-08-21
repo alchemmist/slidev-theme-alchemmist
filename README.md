@@ -113,6 +113,16 @@ Set `pagination: false` or `footer: false` in slide frontmatter to hide either e
 
 The `image-left` and `image-right` layouts hide pagination and footer automatically so their split image can remain edge-to-edge. Split images include an inward-facing shadow and rounded inner corners by default.
 
+Set `image-width` in slide frontmatter to control how much of the slide the image occupies. It accepts CSS widths and defaults to `50%`:
+
+```md
+---
+layout: image-right
+image: /assets/screenshot.png
+image-width: 60%
+---
+```
+
 ### Components and assets
 
 New slides can use `Callout` and `SectionMarker`. Existing `GitHubAlert`, `MarkerX`, `Card`, `Quote`, `Image`, and `AlchemmistFooter` usages remain supported.

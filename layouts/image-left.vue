@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { handleBackground, resolveAssetUrl } from "../layoutHelper";
+import { resolveSplitImageColumns } from "../theme/splitImage";
 
 const props = defineProps({
   image: {
@@ -20,6 +21,10 @@ const attrs = useAttrs();
 const backgroundPosition = computed(
   () => attrs["background-position"] ?? "right",
 );
+const imageWidth = computed(() => String(attrs["image-width"] ?? "50%"));
+const gridStyle = computed(() => ({
+  gridTemplateColumns: resolveSplitImageColumns("left", imageWidth.value),
+}));
 
 const style = computed(() => {
   const background = handleBackground(
@@ -37,7 +42,7 @@ const style = computed(() => {
 
 <template>
   <div class="alchemmist-layout-frame">
-    <div class="grid grid-cols-2 w-full h-full auto-rows-fr">
+    <div class="grid w-full h-full auto-rows-fr" :style="gridStyle">
       <div
         class="alchemmist-split-image alchemmist-split-image--left w-full h-full"
         :style="style"
