@@ -57,8 +57,8 @@ const source = computed(() => {
 .alchemmist-qr-code__icon {
   align-items: center;
   background: #fff;
-  border: 2px solid #111;
   border-radius: 0.45rem;
+  box-shadow: 0 0.16rem 0.45rem rgb(17 17 17 / 30%);
   display: flex;
   height: var(--qr-link-icon-size, 2.6rem);
   justify-content: center;
