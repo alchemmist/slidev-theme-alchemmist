@@ -13,10 +13,7 @@
       }}</span>
       <span class="text-sm text-gray-400" v-if="props.source">
         {{ props.type }}
-        <a
-          v-if="props.sourceUrl"
-          :href="props.sourceUrl"
-          class="text-gray-500 hover:text-gray-800"
+        <a v-if="props.sourceUrl" :href="props.sourceUrl"
           >«{{ props.source }}»</a
         >
         <span v-else>{{ props.source }}</span

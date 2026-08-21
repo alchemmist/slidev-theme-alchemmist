@@ -44,6 +44,17 @@
   --slidev-code-font-family:
     "CMU-Typewriter", "Symbols Nerd Font", monospace !important;
   --alchemmist-footer-height: 0px;
+  --alchemmist-link-color: #6b7280;
+  --alchemmist-link-hover-color: #3ab9d5;
+}
+
+.slidev-layout a:not(.slidev-icon-btn) {
+  color: var(--alchemmist-link-color);
+  transition: color 160ms ease;
+}
+
+.slidev-layout a:not(.slidev-icon-btn):hover {
+  color: var(--alchemmist-link-hover-color);
 }
 
 .slidev-code-block-title {

@@ -30,7 +30,6 @@ const altText = computed(() => props.alt || `QR code for ${props.label}`);
 <style scoped>
 .alchemmist-qr-link {
   align-items: center;
-  color: #111;
   display: flex;
   flex-direction: column;
   font-family: "CMU-Typewriter", "Symbols Nerd Font", monospace;
@@ -38,7 +37,6 @@ const altText = computed(() => props.alt || `QR code for ${props.label}`);
 }
 
 .alchemmist-qr-link a {
-  color: inherit;
   font-size: var(--qr-link-label-size, 1.15rem);
   margin-top: 0.8rem;
   max-width: 100%;
