@@ -49,6 +49,7 @@ const altText = computed(() => props.alt || `QR code for ${props.label}`);
 }
 
 .alchemmist-qr-link a {
+  font-family: "CMU-Typewriter", "Symbols Nerd Font", monospace;
   max-width: 100%;
 }
 
@@ -56,7 +57,7 @@ const altText = computed(() => props.alt || `QR code for ${props.label}`);
   background: transparent;
   color: #666;
   display: block;
-  font-family: var(--slidev-code-font-family);
+  font-family: inherit;
   font-size: var(--qr-link-address-size, 0.72rem);
   overflow-wrap: anywhere;
   padding: 0;
