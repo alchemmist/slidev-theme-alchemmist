@@ -113,6 +113,8 @@ Set `pagination: false` or `footer: false` in slide frontmatter to hide either e
 
 The `image-left` and `image-right` layouts hide pagination and footer automatically so their split image can remain edge-to-edge. Split images include an inward-facing shadow and rounded inner corners by default.
 
+Split images always preserve their aspect ratio and fit the full slide height. `image-width` moves the boundary between content and image; it does not resize or vertically crop the image.
+
 Set `image-width` in slide frontmatter to control how much of the slide the image occupies. It accepts CSS widths and defaults to `50%`:
 
 ```md

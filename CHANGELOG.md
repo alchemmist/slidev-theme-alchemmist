@@ -6,6 +6,7 @@
 - Added default rounded inner corners and inward-facing shadows to split-image layouts.
 - Added configurable `image-width` to split-image layouts with a `50%` default.
 - Reduced split-image content padding to preserve readable line lengths with wider images.
+- Fit split images by height so `image-width` changes placement without vertical cropping.
 
 ## 0.3.2
 

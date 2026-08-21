@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { handleBackground, resolveAssetUrl } from "../layoutHelper";
-import { resolveSplitImageColumns } from "../theme/splitImage";
+import {
+  resolveSplitImageColumns,
+  SPLIT_IMAGE_BACKGROUND_SIZE,
+} from "../theme/splitImage";
 
 const props = defineProps({
   image: {
@@ -9,10 +12,6 @@ const props = defineProps({
   },
   class: {
     type: String,
-  },
-  backgroundSize: {
-    type: String,
-    default: "cover",
   },
 });
 
@@ -30,7 +29,7 @@ const style = computed(() => {
   const background = handleBackground(
     resolveAssetUrl(props.image),
     false,
-    props.backgroundSize,
+    SPLIT_IMAGE_BACKGROUND_SIZE,
   );
 
   return {

@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { useAttrs, computed } from "vue";
 import { handleBackground, resolveAssetUrl } from "../layoutHelper";
-import { resolveSplitImageColumns } from "../theme/splitImage";
+import {
+  resolveSplitImageColumns,
+  SPLIT_IMAGE_BACKGROUND_SIZE,
+} from "../theme/splitImage";
 
 const props = defineProps({
   image: {
@@ -28,7 +31,7 @@ const style = computed(() => {
   const baseStyle = handleBackground(
     resolveAssetUrl(props.image),
     false,
-    "cover", // ✅ ВСЕГДА cover
+    SPLIT_IMAGE_BACKGROUND_SIZE,
   );
 
   return {

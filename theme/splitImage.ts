@@ -1,5 +1,7 @@
 export type SplitImageSide = "left" | "right";
 
+export const SPLIT_IMAGE_BACKGROUND_SIZE = "auto 100%";
+
 export function resolveSplitImageColumns(
   side: SplitImageSide,
   imageWidth: string,
