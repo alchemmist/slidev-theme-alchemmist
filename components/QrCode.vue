@@ -18,31 +18,53 @@ const props = withDefaults(
 const iconSource = computed(() =>
   props.iconSrc ? resolveAssetUrl(props.iconSrc) : undefined,
 );
-const source = computed(() => {
+const qr = computed(() => {
   const svg = renderSVG(props.value, {
     border: 2,
     ecc: props.iconSrc ? "H" : "M",
   });
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+  const viewBoxSize = Number(svg.match(/viewBox="0 0 (\d+) \d+"/)?.[1]);
+  const matrixOffset = Number(svg.match(/<path[^>]+d="M(\d+),/)?.[1]);
+  const quietZone = `${(matrixOffset / viewBoxSize) * 100}%`;
+  return {
+    quietZone,
+    source: `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`,
+  };
 });
 </script>
 
 <template>
-  <div class="alchemmist-qr-code">
-    <img
-      v-if="source"
-      class="alchemmist-qr-code__image"
-      :src="source"
-      :alt="alt"
-    />
-    <span v-if="iconSource" class="alchemmist-qr-code__icon" aria-hidden="true">
-      <img :src="iconSource" alt="" />
-    </span>
+  <div
+    class="alchemmist-qr-code"
+    :style="{ '--qr-code-quiet-zone': qr.quietZone }"
+  >
+    <div v-if="$slots.label" class="alchemmist-qr-code__label">
+      <slot name="label" />
+    </div>
+    <div class="alchemmist-qr-code__canvas">
+      <img class="alchemmist-qr-code__image" :src="qr.source" :alt="alt" />
+      <span
+        v-if="iconSource"
+        class="alchemmist-qr-code__icon"
+        aria-hidden="true"
+      >
+        <img :src="iconSource" alt="" />
+      </span>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .alchemmist-qr-code {
+  width: var(--qr-link-size, 12rem);
+}
+
+.alchemmist-qr-code__label {
+  margin-bottom: 0.8rem;
+  margin-left: var(--qr-code-quiet-zone);
+}
+
+.alchemmist-qr-code__canvas {
   height: var(--qr-link-size, 12rem);
   position: relative;
   width: var(--qr-link-size, 12rem);

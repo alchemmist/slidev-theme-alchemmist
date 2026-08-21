@@ -236,20 +236,30 @@ test("generates icon-backed QR links from URLs", async ({ page }) => {
   const geometry = await links.evaluateAll((elements) =>
     elements.map((element) => {
       const label = element.querySelector("a")?.getBoundingClientRect();
+      const qrRoot = element.querySelector(".alchemmist-qr-code");
       const qr = element
-        .querySelector(".alchemmist-qr-code")
+        .querySelector(".alchemmist-qr-code__canvas")
         ?.getBoundingClientRect();
+      const quietZone = Number.parseFloat(
+        getComputedStyle(qrRoot as Element).getPropertyValue(
+          "--qr-code-quiet-zone",
+        ),
+      );
       return {
+        expectedLabelLeft:
+          Number(qr?.left) + (Number(qr?.width) * quietZone) / 100,
         labelBottom: label?.bottom,
         labelLeft: label?.left,
-        qrLeft: qr?.left,
         qrTop: qr?.top,
       };
     }),
   );
   for (const item of geometry) {
     expect(Number(item.labelBottom)).toBeLessThan(Number(item.qrTop));
-    expect(Number(item.labelLeft)).toBeCloseTo(Number(item.qrLeft), 1);
+    expect(Number(item.labelLeft)).toBeCloseTo(
+      Number(item.expectedLabelLeft),
+      1,
+    );
   }
   await expect(links.locator("a")).toHaveCount(3);
   await expect(links.locator("a img")).toHaveCount(0);
