@@ -131,7 +131,7 @@ New slides can use `Callout` and `SectionMarker`. Existing `GitHubAlert`, `Marke
 
 ## QR links
 
-Use `qr-links` for a large primary QR code and secondary links grouped two per row. `QrLink` generates the QR code from `href`, keeps only the address clickable and optionally overlays an icon in the center:
+Use `qr-links` for a large primary QR code and secondary links grouped two per row. `QrLink` generates the QR code from `href`, makes only the label clickable and optionally overlays an icon in the center:
 
 ```md
 ---

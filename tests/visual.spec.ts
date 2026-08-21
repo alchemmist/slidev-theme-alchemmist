@@ -235,4 +235,6 @@ test("generates icon-backed QR links from URLs", async ({ page }) => {
   expect(sizes[1]).toBeCloseTo(Number(sizes[2]), 1);
   await expect(links.locator("a")).toHaveCount(3);
   await expect(links.locator("a img")).toHaveCount(0);
+  await expect(links.locator("code")).toHaveCount(0);
+  await expect(links.locator("a")).toHaveText(["Demo", "Source", "Blog"]);
 });

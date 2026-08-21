@@ -5,6 +5,7 @@
 - Added the `qr-links` layout plus seamless `QrCode` and `QrLink` generation from URLs with optional centered icons.
 - Made QR icon padding proportional to the backing frame through `--qr-link-icon-fill`.
 - Added a soft shadow to QR icon frames and enforced monospace link labels.
+- Removed visible QR addresses and made their labels the only clickable elements.
 - Hid footer and pagination automatically on `image-left` and `image-right` layouts.
 - Added default rounded inner corners and inward-facing shadows to split-image layouts.
 - Added configurable `image-width` to split-image layouts with a `50%` default.

@@ -32,7 +32,6 @@ const gap = computed(() => String(attrs.gap ?? "3.5rem"));
 }
 
 .alchemmist-qr-links__primary {
-  --qr-link-address-size: 0.8rem;
   --qr-link-icon-size: 3.5rem;
   --qr-link-label-size: 1.4rem;
   --qr-link-size: 18rem;
@@ -43,7 +42,6 @@ const gap = computed(() => String(attrs.gap ?? "3.5rem"));
 }
 
 .alchemmist-qr-links__secondary {
-  --qr-link-address-size: 0.64rem;
   --qr-link-icon-size: 2.35rem;
   --qr-link-label-size: 1rem;
   --qr-link-size: 10.5rem;
