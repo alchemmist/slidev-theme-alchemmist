@@ -62,7 +62,6 @@ const source = computed(() => {
   height: var(--qr-link-icon-size, 2.6rem);
   justify-content: center;
   left: 50%;
-  padding: 0.35rem;
   position: absolute;
   top: 50%;
   translate: -50% -50%;
@@ -71,8 +70,8 @@ const source = computed(() => {
 
 .alchemmist-qr-code__icon img {
   display: block;
-  height: 100%;
+  height: var(--qr-link-icon-fill, 68%);
   object-fit: contain;
-  width: 100%;
+  width: var(--qr-link-icon-fill, 68%);
 }
 </style>

@@ -146,6 +146,8 @@ layout: qr-links
 <QrLink icon-src="/logo.svg" href="https://example.com/blog" label="Blog" />
 ```
 
+The icon occupies `68%` of its backing frame by default, so its whitespace scales with primary and secondary QR sizes. Override `--qr-link-icon-fill` on a slide when a particular icon needs a different optical size.
+
 Asset paths beginning with `/` now honor the configured Vite base path, so the same deck works locally and when deployed below a subpath.
 
 See [MIGRATION.md](./MIGRATION.md) for the compatibility-focused upgrade notes.
