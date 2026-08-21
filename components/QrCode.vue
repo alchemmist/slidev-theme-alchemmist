@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref, watchEffect } from "vue";
-import * as QRCode from "qrcode";
+import { computed } from "vue";
+import { renderSVG } from "uqr";
 import { resolveAssetUrl } from "../theme/assets";
 
 const props = withDefaults(
@@ -15,25 +15,15 @@ const props = withDefaults(
   },
 );
 
-const source = ref("");
 const iconSource = computed(() =>
   props.iconSrc ? resolveAssetUrl(props.iconSrc) : undefined,
 );
-
-watchEffect(async (onCleanup) => {
-  let active = true;
-  onCleanup(() => {
-    active = false;
+const source = computed(() => {
+  const svg = renderSVG(props.value, {
+    border: 2,
+    ecc: props.iconSrc ? "H" : "M",
   });
-
-  const svg = await QRCode.toString(props.value, {
-    type: "svg",
-    errorCorrectionLevel: props.iconSrc ? "H" : "M",
-    margin: 2,
-  });
-
-  if (active)
-    source.value = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 });
 </script>
 
