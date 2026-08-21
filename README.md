@@ -138,6 +138,12 @@ Use `qr-links` for a large primary QR code and secondary links grouped two per r
 layout: qr-links
 ---
 
+::title::
+
+# Useful links
+
+::default::
+
 <QrLink icon-src="/favicon.svg" href="https://example.com" label="Live demo" />
 
 ::right::

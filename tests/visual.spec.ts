@@ -207,6 +207,9 @@ test("generates icon-backed QR links from URLs", async ({ page }) => {
 
   const links = page.locator(".alchemmist-qr-link");
   await expect(links).toHaveCount(3);
+  await expect(page.locator(".alchemmist-qr-links__title h1")).toHaveText(
+    "Useful links",
+  );
   await expect
     .poll(() =>
       links.evaluateAll((elements) =>

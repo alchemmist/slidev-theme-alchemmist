@@ -5,6 +5,12 @@ footer: false
 pagination: false
 ---
 
+::title::
+
+# Useful links
+
+::default::
+
 <QrLink
   href="https://example.com/demo"
   icon-src="/assets/alchemmist-logo.svg"
