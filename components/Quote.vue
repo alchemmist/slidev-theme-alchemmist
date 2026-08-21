@@ -1,9 +1,10 @@
 <template>
-  <div class="flex items-start gap-4 max-w-3xl">
+  <div class="alchemmist-quote flex items-start gap-4 max-w-3xl">
     <img
+      v-if="props.avatar"
       :src="avatarUrl"
       :alt="props.author"
-      class="w-25 h-25 rounded-full object-cover"
+      class="w-25 h-25 aspect-square shrink-0 rounded-full object-cover"
     />
     <div class="flex flex-col border-l-4 border-gray-500 bg-gray-100 p-4">
       <p class="italic mono-text">«{{ props.text }}»</p>
@@ -45,3 +46,10 @@ const avatarUrl = computed(() => {
     : props.avatar;
 });
 </script>
+
+<style scoped>
+.alchemmist-quote {
+  -webkit-user-select: text;
+  user-select: text;
+}
+</style>

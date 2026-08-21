@@ -6,14 +6,17 @@ const props = withDefaults(
   defineProps<{
     gap?: number;
     maxRotation?: number;
+    maxWidth?: string;
+    minWidth?: string;
     seed?: string | number;
     width?: string;
   }>(),
   {
     gap: 12,
     maxRotation: 5,
+    maxWidth: "16.5rem",
+    minWidth: "13.5rem",
     seed: "alchemmist",
-    width: "12rem",
   },
 );
 
@@ -23,6 +26,7 @@ const palette = [
   "var(--alchemmist-sticker-pink, #ffdce5)",
   "var(--alchemmist-sticker-mint, #d9f4df)",
   "var(--alchemmist-sticker-violet, #e9dfff)",
+  "var(--alchemmist-sticker-peach, #ffe0b5)",
 ];
 const board = ref<HTMLElement>();
 let resizeObserver: ResizeObserver | undefined;
@@ -40,8 +44,17 @@ const layout = () => {
 
   if (!stickers.length || !element.clientWidth || !element.clientHeight) return;
 
-  for (const sticker of stickers)
-    sticker.style.setProperty("--sticker-width", props.width);
+  for (const sticker of stickers) {
+    if (props.width) {
+      sticker.style.setProperty("--sticker-width", props.width);
+      sticker.style.setProperty("--sticker-min-width", props.width);
+      sticker.style.setProperty("--sticker-max-width", props.width);
+    } else {
+      sticker.style.removeProperty("--sticker-width");
+      sticker.style.setProperty("--sticker-min-width", props.minWidth);
+      sticker.style.setProperty("--sticker-max-width", props.maxWidth);
+    }
+  }
 
   const placements = placeStickers(
     { height: element.clientHeight, width: element.clientWidth },

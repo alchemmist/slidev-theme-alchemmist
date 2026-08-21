@@ -15,7 +15,9 @@
   transition:
     opacity 180ms ease,
     transform 260ms ease;
-  width: var(--sticker-width, 12rem);
+  max-width: var(--sticker-max-width, 16.5rem);
+  min-width: var(--sticker-min-width, 13.5rem);
+  width: var(--sticker-width, max-content);
   z-index: 1;
 }
 
@@ -27,8 +29,8 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  min-height: 5.2rem;
-  padding: 0.85rem 1rem;
+  min-height: 5.8rem;
+  padding: 0.95rem 1.1rem;
   transform: rotate(var(--sticker-rotation, 0deg));
 }
 
@@ -61,11 +63,11 @@
 
 .alchemmist-sticker__surface :deep(> b),
 .alchemmist-sticker__surface :deep(> strong) {
-  font-size: 1.15rem;
+  font-size: var(--sticker-title-font-size, 1.3rem);
 }
 
 .alchemmist-sticker__surface :deep(> span) {
-  font-size: 0.72rem;
+  font-size: var(--sticker-body-font-size, 0.98rem);
   line-height: 1.25;
   margin-top: 0.32rem;
   opacity: 0.7;
