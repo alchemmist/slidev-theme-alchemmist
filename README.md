@@ -131,19 +131,19 @@ New slides can use `Callout` and `SectionMarker`. Existing `GitHubAlert`, `Marke
 
 ## QR links
 
-Use `qr-links` for a large primary QR code and secondary links grouped two per row. `QrLink` keeps only the address clickable and overlays an icon in the center of the QR code:
+Use `qr-links` for a large primary QR code and secondary links grouped two per row. `QrLink` generates the QR code from `href`, keeps only the address clickable and optionally overlays an icon in the center:
 
 ```md
 ---
 layout: qr-links
 ---
 
-<QrLink src="/qr-demo.svg" icon-src="/favicon.svg" href="https://example.com" label="Live demo" />
+<QrLink icon-src="/favicon.svg" href="https://example.com" label="Live demo" />
 
 ::right::
 
-<QrLink src="/qr-source.svg" icon-src="/github.svg" href="https://github.com/example/repo" label="GitHub" />
-<QrLink src="/qr-blog.svg" icon-src="/logo.svg" href="https://example.com/blog" label="Blog" />
+<QrLink icon-src="/github.svg" href="https://github.com/example/repo" label="GitHub" />
+<QrLink icon-src="/logo.svg" href="https://example.com/blog" label="Blog" />
 ```
 
 Asset paths beginning with `/` now honor the configured Vite base path, so the same deck works locally and when deployed below a subpath.
