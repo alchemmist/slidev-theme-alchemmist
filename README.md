@@ -88,8 +88,8 @@ Version 0.3.1 keeps the original visual design and layout geometry while adding 
 
 - Centralized and configurable pagination and footer chrome
 - Base-path-aware asset URLs for local development and GitHub Pages
-- New `Callout` and `SectionMarker` components
-- Backward-compatible `GitHubAlert` and `MarkerX` components
+- New `SectionMarker` component
+- Backward-compatible `MarkerX` component
 - Type checking, package validation, accessibility checks, and visual regression tests
 - Verified compatibility with the complete EOSP and Talks slide decks
 
@@ -127,7 +127,17 @@ image-width: 60%
 
 ### Components and assets
 
-New slides can use `Callout` and `SectionMarker`. Existing `GitHubAlert`, `MarkerX`, `Card`, `Quote`, `Image`, and `AlchemmistFooter` usages remain supported.
+New slides can use `SectionMarker`. Existing `MarkerX`, `Card`, `Quote`, `Image`, and `AlchemmistFooter` usages remain supported.
+
+Use Slidev's built-in GitHub-style alert syntax for callouts:
+
+```md
+> [!NOTE]
+> Additional context for the audience.
+
+> [!WARNING]
+> A caveat that deserves attention.
+```
 
 ## QR links
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Removed the legacy `Callout` and `GitHubAlert` components in favor of Slidev's built-in GitHub-style alerts.
+
 ## 0.4.0
 
 - Added the `qr-links` layout plus seamless `QrCode` and `QrLink` generation from URLs with optional centered icons.

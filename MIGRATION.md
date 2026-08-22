@@ -14,7 +14,17 @@ Version 0.3.1 adds centralized slide chrome, asset handling and new component na
 
 ## Content
 
-`SectionMarker` and `Callout` are available for new slides. `MarkerX` and `GitHubAlert` remain supported, so existing content does not need to change.
+`SectionMarker` remains available for section labels. Replace legacy `Callout` and `GitHubAlert` components with Slidev's built-in GitHub-style alert syntax:
+
+```md
+> [!NOTE]
+> Additional context for the audience.
+
+> [!WARNING]
+> A caveat that deserves attention.
+```
+
+`MarkerX` remains supported.
 
 Keep deck-specific CSS that targets the established `.slidev-layout` and `.my-auto` structure. Version 0.3.1 intentionally preserves these compatibility seams.
 
