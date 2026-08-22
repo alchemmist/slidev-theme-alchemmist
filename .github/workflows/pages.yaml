@@ -31,7 +31,7 @@ jobs:
       - run: pnpm check
       - run: pnpm slidev build example/slides.md --base /${{ github.event.repository.name }}/ --out dist
       - uses: actions/configure-pages@v6
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: example/dist
       - id: deployment
