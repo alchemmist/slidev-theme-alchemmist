@@ -21,7 +21,7 @@ jobs:
       - run: pnpm check
       - run: pnpm pack
       - run: git archive -o source.zip HEAD
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           body_path: CHANGELOG.md
           files: |
