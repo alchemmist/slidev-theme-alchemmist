@@ -89,6 +89,15 @@
   opacity: 0.5;
 }
 
+.slidev-footer :is(a, button) {
+  opacity: 0.88;
+  transition: opacity 160ms ease;
+}
+
+.slidev-footer :is(a, button):is(:hover, :focus-visible) {
+  opacity: 1;
+}
+
 .slidev-footer-left {
   display: flex;
   align-items: center;
