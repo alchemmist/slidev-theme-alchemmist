@@ -64,12 +64,6 @@
   }
 }
 
-.slidev-layout.image-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .alchemmist-split-image {
   overflow: hidden;
   position: relative;
@@ -77,8 +71,17 @@
 }
 
 .alchemmist-split-image-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 0;
   padding-left: 3rem;
   padding-right: 3rem;
+  padding-top: 0;
+}
+
+.alchemmist-split-image-content > :last-child {
+  margin-bottom: 0;
 }
 
 .alchemmist-split-image--left {
