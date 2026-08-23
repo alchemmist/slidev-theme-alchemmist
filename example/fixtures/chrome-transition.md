@@ -16,3 +16,13 @@ layout: default
 ---
 
 # Slide with chrome
+
+---
+
+layout: image-left
+image: /assets/alchemmist-logo.svg
+footer: false
+pagination: false
+---
+
+# Left image layout

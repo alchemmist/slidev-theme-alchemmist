@@ -106,6 +106,25 @@ test("reveals chrome after a split image slide finishes transitioning", async ({
   await expect(pagination).toHaveCSS("opacity", "1");
 });
 
+test("centers split image content vertically", async ({ page }) => {
+  for (const path of ["/", "/3"]) {
+    await page.goto(`http://127.0.0.1:4174${path}`);
+    const content = page.locator(".alchemmist-split-image-content");
+    const heading = content.locator("h1");
+    const centers = await Promise.all([
+      content.evaluate((element) => {
+        const rect = element.getBoundingClientRect();
+        return (rect.top + rect.bottom) / 2;
+      }),
+      heading.evaluate((element) => {
+        const rect = element.getBoundingClientRect();
+        return (rect.top + rect.bottom) / 2;
+      }),
+    ]);
+    expect(Math.abs(centers[0] - centers[1])).toBeLessThan(1);
+  }
+});
+
 test("centers oversized images in the center layout", async ({ page }) => {
   await page.goto("/2");
   const layout = page.locator(".slidev-page-2 .slidev-layout.center");
