@@ -9,6 +9,7 @@
 - Unified quote, QR and regular link colors through shared theme tokens.
 - Placed clickable QR labels above their codes and aligned both left edges.
 - Added an optional title slot to the `qr-links` layout.
+- Added a shared opacity hover and focus treatment for interactive footer elements.
 - Hid footer and pagination automatically on `image-left` and `image-right` layouts.
 - Added default rounded inner corners and inward-facing shadows to split-image layouts.
 - Added configurable `image-width` to split-image layouts with a `50%` default.
