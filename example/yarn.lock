@@ -5112,9 +5112,7 @@ vue-router@^5.2.0:
     yaml "^2.9.0"
 
 vue@^3.5.22, vue@^3.5.27, vue@^3.5.41:
-  version "3.5.41"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-3.5.41.tgz#8864bddfe59ce128a28c9bad219cd9248916af73"
-  integrity sha512-2laE0p+aK+/AOPG/XL/WepOs/GlK755LJ1XECi9kDUrz1FKNw8rb2Xzlw9JS1rqEV55nb0ttsKxVlTCcd+R5cg==
+  version "3.5.42"
   dependencies:
     "@vue/compiler-dom" "3.5.41"
     "@vue/compiler-sfc" "3.5.41"
