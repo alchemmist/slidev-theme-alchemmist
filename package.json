@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "description": "An academic engineering theme for Slidev",
   "type": "module",
-  "packageManager": "pnpm@11.22.0",
+  "packageManager": "pnpm@11.25.0",
   "engines": {
     "node": ">=24"
   },
