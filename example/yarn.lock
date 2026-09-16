@@ -964,9 +964,7 @@
   integrity sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==
 
 "@slidev/cli@^52.11.3":
-  version "52.19.1"
-  resolved "https://registry.yarnpkg.com/@slidev/cli/-/cli-52.19.1.tgz#8182c17a34a82a334f9f572b5ad93e8b95e74030"
-  integrity sha512-r1QmwgVu4d4bXIl2yp8K36FrjDFHa9EUdYiNSV8N+QpOTJZ82zh5dcZ3ML+nmavCNenYgoWhUqo+bfLhMpt8jA==
+  version "52.20.1"
   dependencies:
     "@antfu/ni" "^30.5.0"
     "@antfu/utils" "^9.3.0"
