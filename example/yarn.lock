@@ -5110,7 +5110,7 @@ vue-router@^5.2.0:
     yaml "^2.9.0"
 
 vue@^3.5.22, vue@^3.5.27, vue@^3.5.41:
-  version "3.5.44"
+  version "3.5.45"
   dependencies:
     "@vue/compiler-dom" "3.5.41"
     "@vue/compiler-sfc" "3.5.41"
